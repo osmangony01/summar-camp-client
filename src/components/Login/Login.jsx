@@ -2,6 +2,7 @@ import { useContext, useState } from 'react';
 import { FaEye, FaEyeSlash, FaGithub, FaGoogle } from 'react-icons/fa';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../provider/AuthProvider';
+import { FcGoogle } from "react-icons/fc";
 
 
 const Login = () => {
@@ -89,9 +90,9 @@ const Login = () => {
                         </small>
                     </div>
                     <button type="submit" className='w-full py-2 mt-5 bg-white border border-purple-400 hover:bg-purple-800 text-base text-black hover:text-white rounded'>Sign In</button>
-                    <p className='mt-2 text-sm  text-slate-600 text-end'>You don't have an account? <Link to="/register" className='text-blue-700 font-semibold'>Register</Link></p>
+                    <p className='mt-2 text-sm  text-slate-600 text-end'>Don't have an account? <Link to="/register" className='text-blue-700 font-semibold'>Sign Up</Link></p>
                     <div className='mt-4'>
-                        <button type="submit" onClick={handleGoogleSignIn} className='other-login-btn'><FaGoogle></FaGoogle>Continue with Google</button>
+                        <button type="submit" onClick={handleGoogleSignIn} className='social-login-btn hover:border-blue-600 hover:border'><FcGoogle size={25}></FcGoogle><span>Sign in with Google</span></button>
                     </div>
                 </form>
             </div>

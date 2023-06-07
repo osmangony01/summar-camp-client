@@ -6,3 +6,6 @@
     @apply w-full bg-slate-100 box-border py-1.5 px-3 rounded  border-transparent border outline-none 
 }
 
+.social-login-btn{
+    @apply w-full py-2 mt-2 bg-white  text-base text-black  rounded flex justify-center items-center gap-2
+  }
