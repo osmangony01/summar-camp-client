@@ -1,14 +1,28 @@
-import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../provider/AuthProvider";
 
 
 const Navbar = () => {
 
+    const { user, logOut } = useContext(AuthContext);
+    const navigate = useNavigate();
+    
+    const handleLogOut = () => {
+        logOut()
+            .then(() => {
+                navigate("/", { replace: true });
+            })
+            .catch(error => console.log(error.message))
+    }
 
     const navItems = <>
         <li><Link to="/">Home</Link></li>
-        <li><Link to="/Login">Login</Link></li>
-        <li><Link to="/register">Register</Link></li>
+        {!user && <li><Link to="/login">Login</Link></li>}
+        {user && <li onClick={handleLogOut}><Link to="/">Sign Out</Link></li>}
+        
     </>
+    
     return (
         <div className="navbar bg-base-100">
             <div className="navbar-start">

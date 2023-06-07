@@ -145,7 +145,7 @@ const Register = () => {
                         <input type="text" {...register("photo_url")} name="photo_url" className='input-control hover:border-blue-400 focus:border-blue-400' placeholder='Enter photo url' />
                     </div>
 
-                    <button className='w-full py-2 mt-5 bg-white border border-purple-300 hover:bg-purple-800 text-base text-black hover:text-white rounded' >Register</button>
+                    <button className='w-full py-2 mt-5 bg-white border border-purple-400 hover:bg-purple-800 text-base text-black hover:text-white rounded' >Sign Up</button>
                     <p className='mt-2 text-sm  text-slate-600 text-end'>Already have an account? <Link to="/login" className='text-blue-700 font-semibold'>Login</Link></p>
                 </form>
             </div>
