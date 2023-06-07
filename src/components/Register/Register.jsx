@@ -1,6 +1,8 @@
 import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../provider/AuthProvider";
+import Swal from "sweetalert2";
 
 
 
@@ -52,8 +54,8 @@ const Register = () => {
 
 
 
-    //const { createUser, updateUserData } = useContext(AuthContext);
-    //const navigate = useNavigate();
+    const { createUser, updateUserData } = useContext(AuthContext);
+    const navigate = useNavigate();
     const [conPassErr, setConPassErr] = useState('');
 
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
@@ -65,44 +67,44 @@ const Register = () => {
             setConPassErr("Password does not match!");
             return;
         }
-        console.log('ok')
-        // createUser(data.email, data.password)
-        //     .then(result => {
-        //         const CreateUser = result.user;
-        //         //console.log(CreateUser);
-        //         reset();
-        //         updateUserData(result.user, data.name, data.photo_url)
-        //             .then(() => {
-        //                 console.log('user name updated ...');
-        //                 const savedUser = { name: data.name, email: data.email };
-        //                 fetch(`http://localhost:5000/users`, {
-        //                     method: "POST",
-        //                     headers: {
-        //                         'content-type': 'application/json'
-        //                     },
-        //                     body: JSON.stringify(savedUser)
-        //                 })
-        //                     .then(res => res.json())
-        //                     .then(data => {
-        //                         if (data.insertedId) {
-        //                             Swal.fire({
-        //                                 position: 'top-end',
-        //                                 icon: 'success',
-        //                                 title: 'Your work has been saved',
-        //                                 showConfirmButton: false,
-        //                                 timer: 1500
-        //                             })
-        //                         }
-        //                     })
-        //             })
-        //             .catch(error => {
-        //                 console.log(error.message);
-        //             })
-        //         navigate("/", { replace: true });
-        //     })
-        //     .catch(error => {
-        //         console.log(error.message);
-        //     })
+        //console.log('ok')
+        createUser(data.email, data.password)
+            .then(result => {
+                const CreateUser = result.user;
+                //console.log(CreateUser);
+                //reset();
+                updateUserData(result.user, data.name, data.photo_url)
+                    .then(() => {
+                        console.log('user name updated ...');
+                        const savedUser = { name: data.name, email: data.email };
+                        fetch(`http://localhost:5000/users`, {
+                            method: "POST",
+                            headers: {
+                                'content-type': 'application/json'
+                            },
+                            body: JSON.stringify(savedUser)
+                        })
+                            .then(res => res.json())
+                            .then(data => {
+                                if (data.insertedId) {
+                                    Swal.fire({
+                                        position: 'top-end',
+                                        icon: 'success',
+                                        title: 'Your work has been saved',
+                                        showConfirmButton: false,
+                                        timer: 1500
+                                    })
+                                }
+                            })
+                    })
+                    .catch(error => {
+                        console.log(error.message);
+                    })
+                navigate("/", { replace: true });
+            })
+            .catch(error => {
+                console.log(error.message);
+            })
     }
 
     console.log(watch("example"));
