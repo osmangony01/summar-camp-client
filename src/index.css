@@ -2,3 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+.input-control {
+    @apply w-full bg-slate-100 box-border py-1.5 px-3 rounded  border-transparent border outline-none 
+}
+
