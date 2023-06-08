@@ -90,7 +90,7 @@ const Register = () => {
                                     Swal.fire({
                                         position: 'top-end',
                                         icon: 'success',
-                                        title: 'Your work has been saved',
+                                        title: 'Registration successful',
                                         showConfirmButton: false,
                                         timer: 1500
                                     })
@@ -146,7 +146,7 @@ const Register = () => {
                     </div>
 
                     <button className='w-full py-2 mt-5 bg-white border border-purple-400 hover:bg-purple-800 text-base text-black hover:text-white rounded' >Sign Up</button>
-                    <p className='mt-2 text-sm  text-slate-600 text-end'>Already have an account? <Link to="/login" className='text-blue-700 font-semibold'>Login</Link></p>
+                    <p className='mt-2 text-sm  text-slate-600 text-end'>Already have an account? <Link to="/login" className='text-blue-700 font-semibold'>Sign In</Link></p>
                 </form>
             </div>
         </div>

@@ -5,8 +5,12 @@ import Swal from "sweetalert2";
 
 const AllUser = () => {
 
+    const headers = {
+        authorization: `Bearer ${localStorage.getItem('access_token')}`
+    }
+
     const { data: users = [], refetch } = useQuery(['users'], async () => {
-        const res = await fetch(`http://localhost:5000/users`);
+        const res = await fetch(`http://localhost:5000/users`, { headers });
         return res.json();
     })
 
@@ -77,7 +81,7 @@ const AllUser = () => {
                                 <td>{user.name}</td>
                                 <td>{user.email}</td>
                                 <td>
-                                    {user.role === 'admin' ? 'admin' : user.role === 'instructor' ? 'instructor' : <><button onClick={()=>handleMakeAdmin(user)} className="btn btn-square bg-orange-500"><FaUserShield size={20} color={"white"}></FaUserShield></button></>}
+                                    {user.role === 'admin' ? 'admin' : user.role === 'instructor' ? 'instructor' : <><button onClick={() => handleMakeAdmin(user)} className="btn btn-square bg-orange-500"><FaUserShield size={20} color={"white"}></FaUserShield></button></>}
                                 </td>
                                 <td><button onClick={() => handleDelete(user)} className="btn btn-square bg-red-600"><FaTrashAlt color={'white'} size={20}></FaTrashAlt></button></td>
                             </tr>
