@@ -2,11 +2,14 @@ import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 import { FaUserCircle } from "react-icons/fa";
+import useRole from "../../hooks/useRole";
 
 
 const Navbar = () => {
     const [userControl, setUserControl] = useState(false);
     const [toggle, setToggle] = useState(false);
+
+    const { role } = useRole();
 
     const { user, logOut } = useContext(AuthContext);
     const navigate = useNavigate();
@@ -23,7 +26,7 @@ const Navbar = () => {
         <li><Link to="/">Home</Link></li>
         <li><Link to="/instructors">Instructors</Link></li>
         <li><Link to="/classes">Classes</Link></li>
-        {user && <li><Link to="/dashboard">Dashboard</Link></li>}
+        {user && <li><Link to={role === "admin" ? "/dashboard/admin-home" : role === 'instructor' ? "/dashboard/instructor-home" : "/dashboard/user-home"}>Dashboard</Link></li>}
         {!user && <li><Link to="/login">Login</Link></li>}
     </>
 

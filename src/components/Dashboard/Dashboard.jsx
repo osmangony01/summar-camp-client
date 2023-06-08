@@ -1,8 +1,11 @@
 import { FaBars, FaUsers } from "react-icons/fa";
 import { Link, Outlet } from "react-router-dom";
+import useRole from "../../hooks/useRole";
 
 
 const Dashboard = () => {
+
+    const {role} = useRole();
 
     return (
         <div className="drawer lg:drawer-open">
@@ -11,10 +14,11 @@ const Dashboard = () => {
                 <Outlet></Outlet>
                 <label htmlFor="my-drawer-2" className="btn btn-outline btn-accent drawer-button lg:hidden "><FaBars size={22}></FaBars></label>
             </div>
-            <div className="drawer-side">
+            <div className="drawer-side ">
                 <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-                <ul className="menu p-4 w-80 h-full bg-base-300 text-base-content">
+                <ul className="menu p-4 w-80 h-full bg-purple-500 text-white text-base-content">
                     <li><Link to="/dashboard/alluser"><FaUsers size={25}></FaUsers><span className="font-semibold">All User</span></Link></li>
+                    <li><Link to="/dashboard/random">Random</Link></li>
                     <li><a>Sidebar Item 2</a></li>
                 </ul>
 
