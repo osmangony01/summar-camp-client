@@ -1,9 +1,29 @@
-import { FaRegEdit, FaTrashAlt } from "react-icons/fa";
+
+import Swal from "sweetalert2";
 import useAllClasses from "../../../../hooks/useAllClasses";
+import instance from "../../../../routes/axiosInstance";
 
 
 const ManageClasses = () => {
     const [allClasses, refetch] = useAllClasses();
+
+    const handleUpdateStatus = async (id, status) => {
+        const updateStatus = { id: id, status: status }
+        const response = await instance.patch("/update-status", updateStatus);
+        console.log(response.data);
+        const data = response.data;
+        if (data.modifiedCount > 0) {
+            refetch();
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: `Status updated successfully`,
+                showConfirmButton: false,
+                timer: 1500
+            })
+        }
+
+    }
 
     return (
         <div>
@@ -35,13 +55,14 @@ const ManageClasses = () => {
                                 <td>$ {item.price}</td>
                                 <td>{item.status}</td>
                                 <td className="flex">
-                                    <button  className="text-black  text-sm py-1 px-1 border border-blue-300 hover:text-white hover:bg-blue-600 rounded font-semibold mr-2">Approved</button>
-                                    <button  className="text-black  text-sm py-1 px-1 border border-orange-300 hover:text-white hover:bg-orange-600 rounded font-semibold mr-2">Deny</button>
-                                    <button  className="text-black  text-sm py-1 px-1 border border-purple-300 hover:text-white hover:bg-purple-600 rounded font-semibold mr-2">Feedback</button>
+                                    <button onClick={() => handleUpdateStatus(item._id, "approved")} className={`manage-class-btn  border border-blue-300 ${item.status === 'pending' ? 'hover:text-white hover:bg-blue-600 text-black' : 'text-slate-400'} `} disabled={item.status === "pending" ? false : true}>Approved</button>
+                                    <button onClick={() => handleUpdateStatus(item._id, "deny")} className={`manage-class-btn  border border-orange-300  ${item.status === 'pending' ? 'hover:text-white hover:bg-orange-600 text-black' : 'text-slate-400'} `} disabled={item.status === "pending" ? false : true}>Deny</button>
+                                    <button className={`manage-class-btn border border-purple-300 ${item.status ==="deny" ? 'hover:text-white hover:bg-purple-600 text-black' : 'text-slate-400'} `} disabled={item.status ==="deny" ? false : true}>Feedback</button>
                                 </td>
                             </tr>
                             )
                         }
+                        {/* {`manage-class-btn border border-purple-300 ${item.status ==="deny" && 'hover:text-white hover:bg-purple-600'} `} */}
                     </tbody>
                 </table>
             </div>
