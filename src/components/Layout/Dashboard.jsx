@@ -51,6 +51,9 @@ const Dashboard = () => {
                     </>}
                     {isRole.role === 'student' && <>
                         <li><Link to="/dashboard/student-home"><FaUsers size={25}></FaUsers><span className="font-semibold">Student Home</span></Link></li>
+                        <li><Link to="/dashboard/my-selected-classes"><FaUsers size={25}></FaUsers><span className="font-semibold">My Selected classes</span></Link></li>
+                        <li><Link to="/dashboard/my-enroll-classes"><FaUsers size={25}></FaUsers><span className="font-semibold">My Enroll classes</span></Link></li>
+                        <li><Link to="/dashboard/payment-history"><FaUsers size={25}></FaUsers><span className="font-semibold">Payment history</span></Link></li>
                         <li><Link to="/dashboard/random">Random</Link></li>
                     </>}
                     <div className="divider ">OR</div>

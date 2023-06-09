@@ -7,13 +7,16 @@ import PrivateRoute from "../private_route/PrivateRoute";
 import Dashboard from "../components/Layout/Dashboard";
 import AllUser from "../components/User/Admin/AllUser/AllUser";
 import AdminHome from "../components/User/Admin/AdminHome/AdminHome";
-import StudentHome from "../components/User/Student/StudentHome/StudentHome";
 import InstructorHome from "../components/User/Instructor/InstructorHome/InstructorHome";
 import Random from "../components/User/Random";
 import Classes from "../components/Classes/Classes";
 import AddClass from "../components/User/Instructor/AddClass/AddClass";
 import MyClass from "../components/User/Instructor/MyClass/MyClass";
 import ManageClasses from "../components/User/Admin/MangeClasses/ManageClasses";
+import StudentHome from "../components/User/Student/StudentHome/StudentHome";
+import SelectedClass from "../components/User/Student/SelectedClass/SelectedClass";
+import EnrolledClass from "../components/User/Student/EnrolledClass/EnrolledClass";
+import PaymentHistory from "../components/User/Student/PaymentHistory/PaymentHistory";
 
 
 const router = createBrowserRouter([
@@ -67,9 +70,22 @@ const router = createBrowserRouter([
                 path: "my-classes",
                 element: <MyClass></MyClass>
             }, 
+            // student routes
             {
                 path: "student-home",
                 element: <StudentHome></StudentHome>
+            }, 
+            {
+                path: "my-selected-classes",
+                element: <SelectedClass></SelectedClass>
+            }, 
+            {
+                path: "my-enroll-classes",
+                element: <EnrolledClass></EnrolledClass>
+            }, 
+            {
+                path: "payment-history",
+                element: <PaymentHistory></PaymentHistory>
             }, 
             
             {
