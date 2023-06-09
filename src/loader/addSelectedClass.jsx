@@ -1,10 +1,9 @@
 
 import instance from "../routes/axiosInstance";
+import Swal from "sweetalert2";
 
-//import Swal from "sweetalert2";
 
-
-const addSelectedClass =  (selectedClass,user) => {
+const addSelectedClass = async (selectedClass,user) => {
     const { _id, className, image, instructorName, instructorEmail, availableSeat, price, description } = selectedClass;
 
     const saveClass= {
@@ -21,18 +20,18 @@ const addSelectedClass =  (selectedClass,user) => {
     };
     console.log(saveClass);
 
-    // const response = await instance.post("/save-selected-class", saveClass);
-    // console.log(response.data);
-    // const data = response.data;
-    // if (data.modifiedCount > 0) {
-    //     Swal.fire({
-    //         position: 'top-end',
-    //         icon: 'success',
-    //         title: `Selected class successfully`,
-    //         showConfirmButton: false,
-    //         timer: 1500
-    //     })
-    // }
+    const response = await instance.post("/save-selected-class", saveClass);
+    console.log(response.data);
+    const data = response.data;
+    if (data.insertedId) {
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: `The class is booked successfully`,
+            showConfirmButton: false,
+            timer: 1500
+        })
+    }
 };
 
 export default addSelectedClass;
