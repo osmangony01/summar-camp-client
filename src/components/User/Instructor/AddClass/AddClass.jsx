@@ -1,67 +1,105 @@
+import { useContext } from "react";
+import { AuthContext } from "../../../../provider/AuthProvider";
+import Swal from "sweetalert2";
 
 
 const AddClass = () => {
-    const handleAddClass = e =>{
+
+    const { user } = useContext(AuthContext);
+
+    const handleAddClass = e => {
         e.preventDefault();
+        const form = e.target;
+        const className = form.class_name.value;
+        const image = form.photo_url.value;
+        const instructorName = form.instructor_name.value;
+        const instructorEmail = form.instructor_email.value;
+        const availableSeat = parseInt(form.available_seat.value);
+        const price = parseFloat(form.price.value);
+        const status = 'pending';
+        const feedbacks = "";
+        const savedClass = { className, image, instructorName, instructorEmail, availableSeat, price, status, feedbacks };
+        console.log(savedClass);
+        fetch('http://localhost:5000/addclass', {
+            method: "POST",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(savedClass)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.insertedId) {
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'Class Added Successfully',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                }
+                form.reset();
+            })
     }
+
     return (
-        <div className='w-3/4 mx-auto bg-[#F4F3F0] rounded px-16 py-6'>
-                <h2 className='text-center text-3xl mb-6  font-semibold'>Add New Class</h2>
-                
-                <form action="" onSubmit={handleAddClass}>
-                    <div className='grid grid-cols-1 md:grid-cols-2 gap-5'>
+        <div className='w-3/4 mx-auto bg-purple-200 rounded px-12 py-6'>
+            <h2 className='text-center text-3xl mb-6  font-semibold'>Add New Class</h2>
+
+            <form action="" onSubmit={handleAddClass}>
+                <div className='grid grid-cols-1 md:grid-cols-2 gap-5 mb-2'>
+                    <div>
+                        <label htmlFor="" className='label'>Name</label>
                         <div>
-                            <label htmlFor="" className='label'>Name</label>
-                            <div>
-                                <input type="text" name="coffee_name" placeholder='Enter coffee name' className='w-full border-0 focus:outline-0 px-4 py-1.5 rounded' />
-                            </div>
-                        </div>
-                        <div>
-                            <label htmlFor="" className='label'>Chef</label>
-                            <div>
-                                <input type="text" name="chef_name" placeholder='Enter chef name' className='input-control' />
-                            </div>
-                        </div>
-                    </div>
-                    <div className='input-group'>
-                        <div>
-                            <label htmlFor="" className='label'>Supplier</label>
-                            <div>
-                                <input type="text" name='supplier' placeholder='Enter coffee supplier' className='input-control' />
-                            </div>
-                        </div>
-                        <div>
-                            <label htmlFor="" className='label'>Taste</label>
-                            <div>
-                                <input type="text" name="taste" placeholder='Enter coffee taste' className='input-control' />
-                            </div>
-                        </div>
-                    </div>
-                    <div className='input-group'>
-                        <div>
-                            <label htmlFor="" className='label'>Category</label>
-                            <div>
-                                <input type="text" name="category" placeholder='Enter coffee category' className='input-control' />
-                            </div>
-                        </div>
-                        <div>
-                            <label htmlFor="" className='label'>Details</label>
-                            <div>
-                                <input type="text" placeholder='Enter coffee details' name="details" className='input-control' />
-                            </div>
+                            <input type="text" name="class_name" placeholder='Enter class name' className='input-control-class focus:border-blue-500 focus:outline-0' />
                         </div>
                     </div>
                     <div>
-                        <label htmlFor="" className='label'>Photo</label>
+                        <label htmlFor="" className='label'>Photo url</label>
                         <div>
-                            <input type="text" placeholder='Enter coffee photo' name="photo" className='input-control' />
+                            <input type="text" name="photo_url" placeholder='Enter photo url' className='input-control-class focus:border-blue-500 focus:outline-0' />
+                        </div>
+                    </div>
+                </div>
+                <div className='grid grid-cols-1 md:grid-cols-2 gap-5 mb-2'>
+                    <div>
+                        <label htmlFor="" className='label'>Instructor Name</label>
+                        <div>
+                            <input type="text" name="instructor_name" value={user.displayName} placeholder='Enter instructor name' className='input-control-class focus:border-blue-500 focus:outline-0 disabled' />
                         </div>
                     </div>
                     <div>
-                        <input type='submit' className='add-coffee-btn' value="Add Class"/>
+                        <label htmlFor="" className='label'>Instructor Email</label>
+                        <div>
+                            <input type="text" name="instructor_email" value={user.email} placeholder='Enter instructor email' className='input-control-class focus:border-blue-500 focus:outline-0 disabled' />
+                        </div>
                     </div>
-                </form>
-            </div>
+                </div>
+                <div className='grid grid-cols-1 md:grid-cols-2 gap-5 mb-2'>
+                    <div>
+                        <label htmlFor="" className='label'>Available Seats</label>
+                        <div>
+                            <input type="number" name="available_seat" placeholder='Enter coffee name' className='input-control-class focus:border-blue-500 focus:outline-0' />
+                        </div>
+                    </div>
+                    <div>
+                        <label htmlFor="" className='label'>Price</label>
+                        <div>
+                            <input type="text" name="price" placeholder='Enter Price' className='input-control-class focus:border-blue-500 focus:outline-0' />
+                        </div>
+                    </div>
+                </div>
+
+                <div className="mb-4">
+                    <label htmlFor="" className='label'>Description</label>
+                    <textarea type='text' name="description" rows="3" className="input-control-class focus:border-blue-500 focus:outline-0" placeholder="Description"></textarea>
+                </div>
+                <div className="">
+                    <input type='submit' className='w-full cursor-pointer py-1.5 border border-purple-600 hover:bg-purple-600 hover:text-white rounded' value="Add Class" />
+                </div>
+            </form>
+        </div>
     );
 };
 
