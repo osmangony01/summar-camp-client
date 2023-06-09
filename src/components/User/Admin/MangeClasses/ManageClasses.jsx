@@ -1,14 +1,6 @@
-import React from 'react';
-import useInstructorClasses from '../../../../hooks/useInstructorClasses';
-import { FaRegEdit, FaTrashAlt } from 'react-icons/fa';
 
-const MyClass = () => {
-    const [instructorClass, refetch] = useInstructorClasses();
-    console.log(instructorClass);
 
-    const handleDelete = item => {
-
-    }
+const ManageClasses = () => {
     return (
         <div>
             <h3 className="text-3xl font-semibold mb-2">Total Classes: {instructorClass.length}</h3>
@@ -51,4 +43,4 @@ const MyClass = () => {
     );
 };
 
-export default MyClass;
+export default ManageClasses;

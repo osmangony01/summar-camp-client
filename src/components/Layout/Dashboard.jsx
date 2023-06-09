@@ -45,7 +45,7 @@ const Dashboard = () => {
                     </>}
                     {isRole.role === 'instructor' && <>
                         <li><Link to="/dashboard/instructor-home"><FaUsers size={25}></FaUsers><span className="font-semibold">User Home</span></Link></li>
-                        <li><Link to="/dashboard/random">My Classes</Link></li>
+                        <li><Link to="/dashboard/my-classes">My Classes</Link></li>
                         <li><Link to="/dashboard/add-class">Add Class</Link></li>
                     </>}
                     {isRole.role === 'student' && <>

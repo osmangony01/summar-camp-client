@@ -12,6 +12,7 @@ import InstructorHome from "../components/User/Instructor/InstructorHome/Instruc
 import Random from "../components/User/Random";
 import Classes from "../components/Classes/Classes";
 import AddClass from "../components/User/Instructor/AddClass/AddClass";
+import MyClass from "../components/User/Instructor/MyClass/MyClass";
 
 
 const router = createBrowserRouter([
@@ -59,6 +60,10 @@ const router = createBrowserRouter([
             {
                 path: "add-class",
                 element: <AddClass></AddClass>
+            }, 
+            {
+                path: "my-classes",
+                element: <MyClass></MyClass>
             }, 
             
             {
