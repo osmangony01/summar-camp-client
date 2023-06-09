@@ -47,7 +47,7 @@ const ManageClasses = () => {
                         {
                             allClasses.map((item, index) => <tr key={item._id}>
                                 <th>{index + 1}</th>
-                                <td><img src={item.image} alt="" /></td>
+                                <td><img src={item.image} alt="img" /></td>
                                 <td>{item.className}</td>
                                 <td>{item.instructorName}</td>
                                 <td>{item.instructorEmail}</td>
@@ -63,6 +63,7 @@ const ManageClasses = () => {
                             )
                         }
                         {/* {`manage-class-btn border border-purple-300 ${item.status ==="deny" && 'hover:text-white hover:bg-purple-600'} `} */}
+                        {/* /images/learn_img.jpg */}
                     </tbody>
                 </table>
             </div>

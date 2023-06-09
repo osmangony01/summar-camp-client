@@ -16,10 +16,12 @@ const AddClass = () => {
         const instructorEmail = form.instructor_email.value;
         const availableSeat = parseInt(form.available_seat.value);
         const price = parseFloat(form.price.value);
+        const description = form.description.value;
         const status = 'pending';
         const feedbacks = "";
         const enrollStudent=0;
-        const savedClass = { className, image, instructorName, instructorEmail, availableSeat, price,enrollStudent, status, feedbacks };
+
+        const savedClass = { className, image, instructorName, instructorEmail, availableSeat, price,enrollStudent, status,description, feedbacks };
         console.log(savedClass);
         fetch('http://localhost:5000/addclass', {
             method: "POST",
