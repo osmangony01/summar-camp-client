@@ -1,8 +1,12 @@
+import useAllClasses from "../../hooks/useAllClasses";
 import useRole from "../../hooks/useRole";
 
 const Random = () => {
     const {role} = useRole();
     console.log(role);
+
+    const [allClasses, refetch] = useAllClasses();
+    console.log('all classes: ', allClasses);
 
     return (
         <div>

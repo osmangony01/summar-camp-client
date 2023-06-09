@@ -13,6 +13,7 @@ import Random from "../components/User/Random";
 import Classes from "../components/Classes/Classes";
 import AddClass from "../components/User/Instructor/AddClass/AddClass";
 import MyClass from "../components/User/Instructor/MyClass/MyClass";
+import ManageClasses from "../components/User/Admin/MangeClasses/ManageClasses";
 
 
 const router = createBrowserRouter([
@@ -42,7 +43,7 @@ const router = createBrowserRouter([
         element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
         children: [
             {
-                path: "alluser",
+                path: "manage-users",
                 element: <AllUser></AllUser>
             }, 
             {
@@ -50,9 +51,10 @@ const router = createBrowserRouter([
                 element: <AdminHome></AdminHome>
             }, 
             {
-                path: "student-home",
-                element: <StudentHome></StudentHome>
+                path: "manage-classes",
+                element: <ManageClasses></ManageClasses>
             }, 
+            // instructor routes
             {
                 path: "instructor-home",
                 element: <InstructorHome></InstructorHome>
@@ -64,6 +66,10 @@ const router = createBrowserRouter([
             {
                 path: "my-classes",
                 element: <MyClass></MyClass>
+            }, 
+            {
+                path: "student-home",
+                element: <StudentHome></StudentHome>
             }, 
             
             {
