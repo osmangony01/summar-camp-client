@@ -3,13 +3,16 @@ import MainLayout from "../components/Layout/MainLayout";
 import Home from "../components/Home/Home";
 import Register from "../components/Register/Register";
 import Login from "../components/Login/Login";
-import Dashboard from "../components/Dashboard/Dashboard";
-import AllUser from "../components/Dashboard/AdminHome/AllUser/AllUser";
-import Random from "../components/Dashboard/Random";
 import PrivateRoute from "../private_route/PrivateRoute";
-import AdminHome from "../components/Dashboard/AdminHome/AdminHome";
-import UserHome from "../components/Dashboard/UserHome/UserHome";
-import InstructorHome from "../components/Dashboard/InstructorHome/InstructorHome";
+import Dashboard from "../components/Layout/Dashboard";
+import AllUser from "../components/User/Admin/AllUser/AllUser";
+import AdminHome from "../components/User/Admin/AdminHome/AdminHome";
+import StudentHome from "../components/User/Student/StudentHome/StudentHome";
+import InstructorHome from "../components/User/Instructor/InstructorHome/InstructorHome";
+import Random from "../components/User/Random";
+import Classes from "../components/Classes/Classes";
+import AddClass from "../components/User/Instructor/AddClass/AddClass";
+
 
 const router = createBrowserRouter([
     {
@@ -27,6 +30,9 @@ const router = createBrowserRouter([
             {
                 path: "/login",
                 element: <Login></Login>
+            },{
+                path:"/classes",
+                element:<Classes></Classes>
             }
         ]
     },
@@ -43,12 +49,16 @@ const router = createBrowserRouter([
                 element: <AdminHome></AdminHome>
             }, 
             {
-                path: "user-home",
-                element: <UserHome></UserHome>
+                path: "student-home",
+                element: <StudentHome></StudentHome>
             }, 
             {
                 path: "instructor-home",
                 element: <InstructorHome></InstructorHome>
+            }, 
+            {
+                path: "add-class",
+                element: <AddClass></AddClass>
             }, 
             
             {

@@ -1,16 +1,16 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 import { FaUserCircle } from "react-icons/fa";
 import useRole from "../../hooks/useRole";
+import axios from "axios";
 
 
 const Navbar = () => {
     const [userControl, setUserControl] = useState(false);
     const [toggle, setToggle] = useState(false);
-
-    const { role } = useRole();
-
+    const [isRole, setIsRole] = useState([]);
+    
     const { user, logOut } = useContext(AuthContext);
     const navigate = useNavigate();
 
@@ -22,11 +22,29 @@ const Navbar = () => {
             .catch(error => console.log(error.message))
     }
 
+    useEffect(() => {
+        const fetchRole = async () => {
+            if (user?.email) {
+                try {
+                    const response = await axios.get(`http://localhost:5000/user?email=${user.email}`);
+                    //const data = await response.json();
+                    const data = response.data;
+                    setIsRole(data);
+                }
+                catch (error) {
+                    console.error('Error fetching role:', error);
+                }
+            }
+        };
+        fetchRole();
+    }, [user]);
+
+    console.log(isRole)
     const navItems = <>
         <li><Link to="/">Home</Link></li>
         <li><Link to="/instructors">Instructors</Link></li>
         <li><Link to="/classes">Classes</Link></li>
-        {user && <li><Link to={role === "admin" ? "/dashboard/admin-home" : role === 'instructor' ? "/dashboard/instructor-home" : "/dashboard/user-home"}>Dashboard</Link></li>}
+       {user && <li><Link to={isRole.role === "admin" ? "/dashboard/admin-home" : isRole.role === 'instructor' ? "/dashboard/instructor-home" : "/dashboard/student-home"}>Dashboard</Link></li>}
         {!user && <li><Link to="/login">Login</Link></li>}
     </>
 
