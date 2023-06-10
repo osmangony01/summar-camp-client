@@ -1,9 +1,57 @@
 import React from 'react';
+import useBookedClasses from '../../../../hooks/useBookedClasses';
+import { FaTrashAlt } from 'react-icons/fa';
 
 const SelectedClass = () => {
+    const [bookedClasses] = useBookedClasses();
+    console.log(bookedClasses);
+
+    const handleDelete = id =>{
+        
+    }
+
     return (
         <div>
-            Selected Classes
+            <div className="">
+                <h2 className="text-3xl text-orange-500 font-semibold my-10 text-center">All Classes Here</h2>
+                <div className="overflow-x-auto">
+                    <table className="table table-zebra text-sm">
+                        <thead className=" bg-slate-200  text-black font-semibold">
+                            <tr>
+                                <th>#</th>
+                                <th>Image</th>
+                                <th>Class Name</th>
+                                <th>Instructor Name</th>
+                                <th>Available seats</th>
+                                <th>Price</th>
+                                <th>Payment</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                bookedClasses.map((item, index) => <tr key={item._id}>
+                                    <td>{index + 1}</td>
+                                    <td>
+                                        <div className="avatar">
+                                            <div className="mask rounded-md w-[100px] h-[100px]">
+                                                <img src={item.image} alt="Avatar Tailwind CSS Component" />
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>{item.className}</td>
+                                    <td>{item.instructorName}</td>
+                                    <td>{item.availableSeat}</td>
+                                    <td>$ {item.price}</td>
+                                    <td><button className='p-2 rounded-md text-base font-semibold bg-orange-500 text-white hover:bg-orange-700 border-orange-400'>Pay</button></td>
+                                    <td><button onClick={() => handleDelete(item._id)} className="p-2 rounded-md text-base font-semibold bg-red-600 hover:bg-slate-400"><FaTrashAlt color={'white'} size={25}></FaTrashAlt></button></td>
+                                </tr>
+                                )
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     );
 };
