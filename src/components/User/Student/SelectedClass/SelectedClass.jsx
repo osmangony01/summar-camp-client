@@ -1,6 +1,7 @@
 import React from 'react';
 import useBookedClasses from '../../../../hooks/useBookedClasses';
 import { FaTrashAlt } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const SelectedClass = () => {
     const [bookedClasses] = useBookedClasses();
@@ -43,7 +44,7 @@ const SelectedClass = () => {
                                     <td>{item.instructorName}</td>
                                     <td>{item.availableSeat}</td>
                                     <td>$ {item.price}</td>
-                                    <td><button className='p-2 rounded-md text-base font-semibold bg-orange-500 text-white hover:bg-orange-700 border-orange-400'>Pay</button></td>
+                                    <td><Link to={`/dashboard/payment/${item._id}`}><button className='p-2 rounded-md text-base font-semibold bg-orange-500 text-white hover:bg-orange-700 border-orange-400'>Pay</button></Link></td>
                                     <td><button onClick={() => handleDelete(item._id)} className="p-2 rounded-md text-base font-semibold bg-red-600 hover:bg-slate-400"><FaTrashAlt color={'white'} size={25}></FaTrashAlt></button></td>
                                 </tr>
                                 )

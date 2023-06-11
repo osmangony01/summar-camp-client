@@ -17,6 +17,7 @@ import StudentHome from "../components/User/Student/StudentHome/StudentHome";
 import SelectedClass from "../components/User/Student/SelectedClass/SelectedClass";
 import EnrolledClass from "../components/User/Student/EnrolledClass/EnrolledClass";
 import PaymentHistory from "../components/User/Student/PaymentHistory/PaymentHistory";
+import Payment from "../components/User/Student/Payement/Payment";
 
 
 const router = createBrowserRouter([
@@ -87,6 +88,11 @@ const router = createBrowserRouter([
                 path: "payment-history",
                 element: <PaymentHistory></PaymentHistory>
             }, 
+            {
+                path:"payment/:id",
+                element:<Payment></Payment>,
+                loader: ({params}) => fetch(`http://localhost:5000/booked-class/${params.id}`)
+            },
             
             {
                 path: "random",
