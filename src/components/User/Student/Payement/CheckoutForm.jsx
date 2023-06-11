@@ -137,7 +137,7 @@ const CheckoutForm = ({ selectedClass, price }) => {
                         Swal.fire({
                             position: 'center',
                             icon: 'success',
-                            title: 'Class Added Successfully',
+                            title: 'Payment is Successfully',
                             showConfirmButton: false,
                             timer: 1500
                         })

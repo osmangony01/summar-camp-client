@@ -2,13 +2,15 @@ import React from 'react';
 import useBookedClasses from '../../../../hooks/useBookedClasses';
 import { FaTrashAlt } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import instance from '../../../../routes/axiosInstance';
 
 const SelectedClass = () => {
     const [bookedClasses] = useBookedClasses();
     console.log(bookedClasses);
 
-    const handleDelete = id =>{
-        
+    const handleDelete = async id =>{
+        const res = await instance.delete(`/delete-selected-class/${id}`)
+        const data = res.data;
     }
 
     return (

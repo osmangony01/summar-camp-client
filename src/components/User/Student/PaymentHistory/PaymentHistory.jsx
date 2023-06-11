@@ -1,8 +1,15 @@
 
+
+import moment from 'moment-timezone';
 import useEnrolledClasses from '../../../../hooks/useEnrolledClasses';
+
 
 const PaymentHistory = () => {
     const [enrolledClasses] = useEnrolledClasses();
+    const sortedClasses = enrolledClasses.sort((a, b) => new Date(b.date) - new Date(a.date));
+    const customDate = '2023-06-11T05:52:17.725Z';
+    const formattedTime = moment(customDate).tz('Asia/Dhaka').format('YYYY-MM-DD HH:mm:ss');
+
     return (
         <div>
         <div className="">
@@ -22,13 +29,13 @@ const PaymentHistory = () => {
                     </thead>
                     <tbody className='text-sm'>
                         {
-                            enrolledClasses.map((item, index) => <tr key={item._id}>
+                            sortedClasses.map((item, index) => <tr key={item._id}>
                                 <td>{index + 1}</td>
                                 <td>{item.className}</td>
                                 <td>{item.transactionId}</td>
                                 <td>$ {item.price}</td>
                                 <td className='text-green-500 text-center'>{item.paymentStatus}</td>
-                                <td>{item.date}</td>
+                            <td>{moment(item.date).tz('Asia/Dhaka').format('YYYY-MM-DD HH:mm:ss')}</td>
                             </tr>
                             )
                         }
