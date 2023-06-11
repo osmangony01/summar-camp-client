@@ -1,41 +1,28 @@
-import { useContext } from "react";
-import { AuthContext } from "../../provider/AuthProvider";
 import useApprovedClasses from "../../hooks/useApprovedClasses";
-import { useNavigate } from "react-router-dom";
-import addSelectedClass from "../../loader/addSelectedClass";
 import Banner from "../Home/Banner";
 
-const Classes = () => {
-    const { user } = useContext(AuthContext);
+
+const Instructor = () => {
     const [approvedClasses] = useApprovedClasses();
-    const navigate = useNavigate();
 
-    const handleClasses = (item) => {
-        if (user) {
-            addSelectedClass(item, user);
-        }
-        else {
-            navigate("/login", { replace: true });
-        }
-    }
-
+    
     return (
         <div>
         <Banner></Banner>
             <div className="w-4/5 mx-auto my-12">
-                <h2 className="text-3xl text-orange-500 font-semibold mb-10 mt-16 text-center">All Classes Here</h2>
+                <h2 className="text-3xl text-orange-500 font-semibold mt-16 mb-10 text-center">All Instructors</h2>
                 <div className="overflow-x-auto">
                     <table className="table table-zebra">
-                        {/* head */}
                         <thead className="text-sm bg-slate-200  text-black font-semibold">
                             <tr>
                                 <th>#</th>
                                 <th>Image</th>
                                 <th>Class Name</th>
                                 <th>Instructor Name</th>
+                                <th>Instructor Email</th>
                                 <th>Available seats</th>
                                 <th>Price</th>
-                                <th>Action</th>
+                                
                             </tr>
                         </thead>
                         <tbody>
@@ -50,10 +37,11 @@ const Classes = () => {
                                         </div>
                                     </td>
                                     <td>{item.className}</td>
-                                    <td >{item.instructorName}</td>
+                                    <td>{item.instructorName}</td>
+                                    <td>{item.instructorEmail}</td>
                                     <td>{item.availableSeat}</td>
                                     <td>$ {item.price}</td>
-                                    <td><button onClick={() => handleClasses(item)} className="btn btn-outline btn-primary btn-sm">Choose</button></td>
+                                    
                                 </tr>
                                 )
                             }
@@ -65,5 +53,4 @@ const Classes = () => {
     );
 };
 
-export default Classes;
-
+export default Instructor;
