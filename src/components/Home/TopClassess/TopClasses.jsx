@@ -9,14 +9,15 @@ const TopClasses = () => {
     const [approvedClass] = useApprovedClasses();
     console.log(approvedClass);
     
+    const sortedClass = approvedClass.sort((a, b) => b.enrollStudent - a.enrollStudent);
+
     let topClasses = [];
     if (approvedClass.length > 6) {
-        topClasses = approvedClass.slice(0,6);
+        topClasses = sortedClass.slice(0,6);
     }
     else {
-        topClasses = approvedClass;
+        topClasses = sortedClass;
     }
-
 
     const { user } = useContext(AuthContext);
     const navigate = useNavigate();
@@ -31,7 +32,7 @@ const TopClasses = () => {
     }
 
     return (
-        <div className="my-10">
+        <div className="my-10 mx-4 md:mx-0">
             <h2 className="text-3xl text-center font-semibold my-10">Top Popular Classes</h2>
             <div className="w-full md:w-4/5 lg:w-3/4 mx-auto  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
                 {
