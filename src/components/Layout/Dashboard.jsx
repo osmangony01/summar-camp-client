@@ -19,7 +19,7 @@ const Dashboard = () => {
                 <label htmlFor="my-drawer-2" className="btn btn-outline btn-accent drawer-button lg:hidden "><FaBars size={22}></FaBars></label>
             </div>
             <div className="drawer-side ">
-                <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
+                <label htmlFor="my-drawer-2" className="drawer-overlay m-0"></label>
                 <ul className="menu p-4 w-80 h-full bg-purple-500 text-white font-semibold text-base block">
                     {isRole.role === 'admin' && <>
                         <li><Link to="/dashboard/admin-home"><FaUsers size={25}></FaUsers><span className="font-semibold">Admin Home</span></Link></li>

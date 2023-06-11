@@ -6,7 +6,7 @@ const useInstructors = () => {
     const { data: instructors = [] } = useQuery({
         queryKey: ['instructors'],
         queryFn: async () => {
-            const response = await axiosInstance.get(`http://localhost:5000/instructors`);
+            const response = await axiosInstance.get(`/instructors`);
             return response.data;
         },
     })

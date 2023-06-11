@@ -1,22 +1,46 @@
-import React from 'react';
+
 import useBookedClasses from '../../../../hooks/useBookedClasses';
 import { FaTrashAlt } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import axiosInstance from '../../../../routes/axiosInstance';
+import Swal from 'sweetalert2';
 
 const SelectedClass = () => {
-    const [bookedClasses] = useBookedClasses();
+    const [bookedClasses, refetch] = useBookedClasses();
     console.log(bookedClasses);
 
-    const handleDelete = async id =>{
-        const res = await axiosInstance.delete(`/delete-selected-class/${id}`)
-        const data = res.data;
+    const handleDelete =  id => {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                async function deleteClass (){
+                    const res = await axiosInstance.delete(`/delete-selected-class/${id}`);
+                    const data = res.data;
+                    if (data.deletedCount > 0) {
+                        refetch();
+                        Swal.fire(
+                            'Deleted!',
+                            'Your file has been deleted.',
+                            'success'
+                        )
+                    }
+                }
+                deleteClass();
+            }
+        })
     }
 
     return (
         <div>
             <div className="">
-                <h2 className="text-3xl text-orange-500 font-semibold my-10 text-center">All Classes Here</h2>
+                <h2 className="text-3xl text-orange-500 font-semibold my-10">My Classes</h2>
                 <div className="overflow-x-auto">
                     <table className="table table-zebra text-sm">
                         <thead className=" bg-slate-200  text-black font-semibold">
