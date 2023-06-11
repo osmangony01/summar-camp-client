@@ -7,8 +7,7 @@ import useEnrolledClasses from '../../../../hooks/useEnrolledClasses';
 const PaymentHistory = () => {
     const [enrolledClasses] = useEnrolledClasses();
     const sortedClasses = enrolledClasses.sort((a, b) => new Date(b.date) - new Date(a.date));
-    const customDate = '2023-06-11T05:52:17.725Z';
-    const formattedTime = moment(customDate).tz('Asia/Dhaka').format('YYYY-MM-DD HH:mm:ss');
+    
 
     return (
         <div>

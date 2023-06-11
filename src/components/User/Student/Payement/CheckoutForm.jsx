@@ -4,7 +4,6 @@ import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../../../provider/AuthProvider';
 
 import './CheckoutForm.css';
-import instance from '../../../../routes/axiosInstance';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
 
@@ -90,26 +89,7 @@ const CheckoutForm = ({ selectedClass, price }) => {
         setProcessing(false)
 
         if (paymentIntent.status === 'succeeded') {
-            //     setTransactionId(paymentIntent.id);
-            //     // save payment information to the server
-            //     const payment = {
-            //         email: user?.email,
-            //         transactionId: paymentIntent.id,
-            //         price,
-            //         date: new Date(),
-            //         quantity: cart.length,
-            //         cartItems: cart.map(item => item._id),
-            //         menuItems: cart.map(item => item.menuItemId),
-            //         status: 'service pending',
-            //         itemNames: cart.map(item => item.name)
-            //     }
-            //     axiosSecure.post('/payments', payment)
-            //         .then(res => {
-            //             console.log(res.data);
-            //             if (res.data.result.insertedId) {
-            //                 // display confirm
-            //             }
-            //         })
+          
             const enrolledClass = {
                 selectedClassId : selectedClass._id,
                 classId: selectedClass.classId,

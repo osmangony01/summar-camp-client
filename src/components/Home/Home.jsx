@@ -1,10 +1,11 @@
+import Banner from "./Banner";
 import TopClasses from "./TopClassess/TopClasses";
 
 
 const Home = () => {
     return (
         <div>
-            this is home page
+            <Banner></Banner>
             <TopClasses></TopClasses>
         </div>
     );

@@ -1,12 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
-import instance from "../routes/axiosInstance";
+import axiosInstance from "../routes/axiosInstance";
 
 const useApprovedClasses = () => {
    
     const { isLoading, refetch, data: approvedClass = [] } = useQuery({
         queryKey: ['approvedClass'],
         queryFn: async () => {
-            const response = await instance.get("/approved-classes");
+            const response = await axiosInstance.get("/approved-classes");
             return response.data;
         },
     })

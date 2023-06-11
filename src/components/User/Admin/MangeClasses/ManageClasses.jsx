@@ -1,7 +1,7 @@
 
 import Swal from "sweetalert2";
 import useAllClasses from "../../../../hooks/useAllClasses";
-import instance from "../../../../routes/axiosInstance";
+import axiosInstance from "../../../../routes/axiosInstance";
 
 
 const ManageClasses = () => {
@@ -9,7 +9,7 @@ const ManageClasses = () => {
 
     const handleUpdateStatus = async (id, status) => {
         const updateStatus = { id: id, status: status }
-        const response = await instance.patch("/update-status", updateStatus);
+        const response = await axiosInstance.patch("/update-status", updateStatus);
         console.log(response.data);
         const data = response.data;
         if (data.modifiedCount > 0) {

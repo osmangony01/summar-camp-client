@@ -1,5 +1,5 @@
 
-import instance from "../routes/axiosInstance";
+import axiosInstance from "../routes/axiosInstance";
 import Swal from "sweetalert2";
 
 
@@ -20,7 +20,7 @@ const addSelectedClass = async (selectedClass,user) => {
     };
     console.log(saveClass);
 
-    const response = await instance.post("/save-selected-class", saveClass);
+    const response = await axiosInstance.post("/save-selected-class", saveClass);
     console.log(response.data);
     const data = response.data;
     if (data.insertedId) {

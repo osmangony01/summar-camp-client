@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../provider/AuthProvider';
-import instance from '../routes/axiosInstance';
 import { useQuery } from '@tanstack/react-query';
+import axiosInstance from '../routes/axiosInstance';
 
 const useBookedClasses = () => {
     const { user } = useContext(AuthContext);
@@ -9,7 +9,7 @@ const useBookedClasses = () => {
     const { isLoading, refetch, data: bookedClasses = [] } = useQuery({
         queryKey: ['bookedClasses', user?.email],
         queryFn: async () => {
-            const response = await instance.get(`/booked-classes?email=${user.email}`)
+            const response = await axiosInstance.get(`/booked-classes?email=${user.email}`)
             return response.data;
         },
     })
