@@ -18,19 +18,19 @@ const CheckoutForm = ({ selectedClass, price }) => {
 
     const navigate = useNavigate();
 
-    console.log(selectedClass)
-    console.log(price);
+    //console.log(selectedClass)
+    //console.log(price);
 
     useEffect(() => {
         if (price > 0) {
-            fetch("http://localhost:5000/create-payment-intent", {
+            fetch("https://summar-camp-server.vercel.app/create-payment-intent", {
                 method: "POST",
                 headers: { "content-type": "application/json" },
                 body: JSON.stringify({ price }),
             })
                 .then((res) => res.json())
                 .then((data) => {
-                    console.log(data.clientSecret);
+                    //console.log(data.clientSecret);
                     setClientSecret(data.clientSecret)
                 });
         }
@@ -49,7 +49,7 @@ const CheckoutForm = ({ selectedClass, price }) => {
         if (card === null) {
             return
         }
-        console.log(card);
+        //console.log(card);
 
         const { error, paymentMethod } = await stripe.createPaymentMethod({
             type: 'card',
@@ -57,12 +57,12 @@ const CheckoutForm = ({ selectedClass, price }) => {
         })
 
         if (error) {
-            console.log('error', error)
+           // console.log('error', error)
             setCardError(error.message);
         }
         else {
             setCardError('');
-            console.log('payment method', paymentMethod)
+            //console.log('payment method', paymentMethod)
         }
 
         setProcessing(true)
@@ -81,10 +81,10 @@ const CheckoutForm = ({ selectedClass, price }) => {
         );
 
         if (confirmError) {
-            console.log(confirmError);
+            //console.log(confirmError);
         }
 
-        console.log('payment intent', paymentIntent)
+        //console.log('payment intent', paymentIntent)
 
         setProcessing(false)
 
@@ -105,14 +105,14 @@ const CheckoutForm = ({ selectedClass, price }) => {
                 paymentStatus: "paid"
             }
 
-            fetch("http://localhost:5000/payment", {
+            fetch("https://summar-camp-server.vercel.app/payment", {
                 method: "POST",
                 headers: { "content-type": "application/json" },
                 body: JSON.stringify(enrolledClass),
             })
                 .then((res) => res.json())
                 .then((data) => {
-                    console.log(data);
+                    //console.log(data);
                     if (data.insertedId) {
                         Swal.fire({
                             position: 'center',

@@ -29,7 +29,6 @@ const Classes = () => {
                 <h2 className="text-3xl text-orange-500 font-semibold mb-10 mt-16 text-center">All Classes Here</h2>
                 <div className="overflow-x-auto">
                     <table className="table table-zebra">
-                        {/* head */}
                         <thead className="text-sm bg-slate-200  text-black font-semibold">
                             <tr>
                                 <th>#</th>

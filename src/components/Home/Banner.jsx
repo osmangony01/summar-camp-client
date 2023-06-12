@@ -4,11 +4,6 @@ import img2 from '../../../public/images/banner/b2.jpg';
 import img3 from '../../../public/images/banner/b3.jpg';
 import img4 from '../../../public/images/banner/b4.png';
 
-
-
-
-
-
 const Banner = () => {
 
     const bannerContent = <>
@@ -23,31 +18,9 @@ const Banner = () => {
         </div>
     </>
 
-    
 
     return (
         <div>
-            {/* <div className="h-[280px] sm:h-[300px] md:h-[400px] xl:h-[500px] ">
-                <Carousel className="rounded-none">
-                    <div className="relative rounded-none">
-                        <img src={img1} alt="..." className="h-[280px] sm:h-[300px] md:h-[400px] xl:h-[500px] w-full"/>
-                        {bannerContent}
-                    </div>
-                    <div className="relative">
-                    <img src={img2} alt="..." className="h-[280px] sm:h-[300px] md:h-[400px] xl:h-[500px] w-full"/>
-                        {bannerContent}
-                    </div>
-                    <div className="relative">
-                    <img src={img3} alt="..." className="h-[280px] sm:h-[300px] md:h-[400px] xl:h-[500px] w-full"/>
-                        {bannerContent}
-                    </div>
-                    <div className="relative">
-                    <img src={img4} alt="..." className="h-[280px] sm:h-[300px] md:h-[400px] xl:h-[500px] w-full"/>
-                        {bannerContent}
-                    </div>
-                    
-                </Carousel>
-            </div> */}
             <div className="carousel w-full object-contain">
                 <div id="slide1" className="carousel-item relative w-full ">
                     <img src={img1} className="h-[280px] sm:h-[300px] md:h-[400px] xl:h-[500px] w-full" />

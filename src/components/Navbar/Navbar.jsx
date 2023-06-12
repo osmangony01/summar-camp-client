@@ -1,16 +1,14 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 import { FaUserCircle } from "react-icons/fa";
 import useRole from "../../hooks/useRole";
-import axios from "axios";
 import ActiveLink from "../ActiveLink/ActiveLink";
 
 
 const Navbar = () => {
     const [userControl, setUserControl] = useState(false);
     const [toggle, setToggle] = useState(false);
-    //const [isRole, setIsRole] = useState([]);
 
     const { user, logOut } = useContext(AuthContext);
     const navigate = useNavigate();
@@ -24,9 +22,8 @@ const Navbar = () => {
     }
 
     const isRole = useRole();
-    console.log(isRole);
+    //console.log(isRole);
 
-    //console.log(isRole)
     const navItems = <>
         <li><ActiveLink to="/">Home</ActiveLink></li>
         <li><ActiveLink to="/classes">Classes</ActiveLink></li>

@@ -1,5 +1,5 @@
 import { useContext, useState } from 'react';
-import { FaEye, FaEyeSlash, FaGithub, FaGoogle } from 'react-icons/fa';
+import { FaEye, FaEyeSlash, } from 'react-icons/fa';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../provider/AuthProvider';
 import { FcGoogle } from "react-icons/fc";
@@ -50,7 +50,7 @@ const Login = () => {
                 console.log(loggedUser);
                 navigate("/", { replace: true });
                 const savedUser = { name: loggedUser.displayName, email: loggedUser.email, role: 'student', photo:loggedUser.photoURL };
-                fetch(`http://localhost:5000/users`, {
+                fetch(`https://summar-camp-server.vercel.app/users`, {
                     method: "POST",
                     headers: {
                         'content-type': 'application/json'
@@ -61,7 +61,6 @@ const Login = () => {
                     .then(() => {
                         navigate(from, { replace: true });
                     })
-                //navigate(from, { replace: true });
             })
             .catch(error => {
                 setError("Incorrect Email or Password!");

@@ -18,10 +18,10 @@ const addSelectedClass = async (selectedClass,user) => {
         price:price,
         description:description
     };
-    console.log(saveClass);
+    //console.log(saveClass);
 
     const response = await axiosInstance.post("/save-selected-class", saveClass);
-    console.log(response.data);
+    //console.log(response.data);
     const data = response.data;
     if (data.insertedId) {
         Swal.fire({

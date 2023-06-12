@@ -11,7 +11,7 @@ const ManageClasses = () => {
     const handleUpdateStatus = async (id, status) => {
         const updateStatus = { id: id, status: status }
         const response = await axiosInstance.patch("/update-status", updateStatus);
-        console.log(response.data);
+        //console.log(response.data);
         const data = response.data;
         if (data.modifiedCount > 0) {
             refetch();
@@ -26,21 +26,7 @@ const ManageClasses = () => {
 
     }
 
-    const handleGiveFeedback = async (id) =>{
-        const response = await axiosInstance.patch("/give-feedback", {id});
-        console.log(response.data);
-        const data = response.data;
-        if (data.modifiedCount > 0) {
-            refetch();
-            Swal.fire({
-                position: 'top-end',
-                icon: 'success',
-                title: `Status updated successfully`,
-                showConfirmButton: false,
-                timer: 1500
-            })
-        }
-    }
+    
 
     return (
         <div>
@@ -79,8 +65,7 @@ const ManageClasses = () => {
                             </tr>
                             )
                         }
-                        {/* {`manage-class-btn border border-purple-300 ${item.status ==="deny" && 'hover:text-white hover:bg-purple-600'} `} */}
-                        {/* /images/learn_img.jpg */}
+                       
                     </tbody>
                 </table>
             </div>

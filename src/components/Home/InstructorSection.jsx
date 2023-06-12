@@ -1,8 +1,6 @@
 
 import useApprovedClasses from "../../hooks/useApprovedClasses";
 
-
-
 const InstructorSection = () => {
 
     const [approvedClass] = useApprovedClasses();
@@ -11,7 +9,7 @@ const InstructorSection = () => {
         instructors = approvedClass.slice(0, 6);
     } 
     else {
-        instructors = approvedClass
+        instructors = approvedClass;
     }
 
 
@@ -25,7 +23,6 @@ const InstructorSection = () => {
                         <figure><img src={item.instructorPhoto} className="w-full h-[200px]" alt="img" /></figure>
                         <div className="flex flex-col p-4 gap-1">
                             <h2 className="card-title">{item.instructorName}</h2>
-                            {/* <p>Taken {item.className}</p> */}
                         </div>
                     </div>)
                 }

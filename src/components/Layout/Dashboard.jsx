@@ -1,17 +1,14 @@
 import { FaBars, FaHome, FaListUl, FaUserFriends, FaUsers } from "react-icons/fa";
 import { Link, Outlet } from "react-router-dom";
 import useRole from "../../hooks/useRole";
-import { useContext, useEffect, useState } from "react";
+import { useContext,  } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
-import axios from "axios";
 import { BsFillBookmarkPlusFill } from "react-icons/bs";
 import { MdAddCard } from "react-icons/md";
-import { GrCheckboxSelected } from "react-icons/gr";
-
-//RiPlayListAddFill
 import { RiPlayListAddFill } from "react-icons/ri";
+
 const Dashboard = () => {
-    //const [isRole, setIsRole] = useState([]);
+   
     const { user } = useContext(AuthContext);
 
     const isRole = useRole();

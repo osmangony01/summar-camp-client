@@ -7,7 +7,7 @@ import Swal from 'sweetalert2';
 
 const SelectedClass = () => {
     const [bookedClasses, refetch] = useBookedClasses();
-    console.log(bookedClasses);
+    //console.log(bookedClasses);
 
     const handleDelete =  id => {
         Swal.fire({

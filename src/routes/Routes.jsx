@@ -106,7 +106,7 @@ const router = createBrowserRouter([
             {
                 path:"payment/:id",
                 element:<Payment></Payment>,
-                loader: ({params}) => fetch(`http://localhost:5000/booked-class/${params.id}`)
+                loader: ({params}) => fetch(`https://summar-camp-server.vercel.app/booked-class/${params.id}`)
             },
             
             {

@@ -11,7 +11,7 @@ const useRole = () => {
         const fetchRole = async () => {
             if (user?.email) {
                 try {
-                    const response = await axios.get(`http://localhost:5000/user?email=${user.email}`);
+                    const response = await axios.get(`https://summar-camp-server.vercel.app/user?email=${user.email}`);
                     //const data = await response.json();
                     const data = response.data;
                     setIsRole(data);

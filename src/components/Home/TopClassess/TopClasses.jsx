@@ -8,7 +8,7 @@ import useRole from "../../../hooks/useRole";
 
 const TopClasses = () => {
     const [approvedClass] = useApprovedClasses();
-    console.log(approvedClass);
+    //console.log(approvedClass);
     
     const isRole = useRole();
     

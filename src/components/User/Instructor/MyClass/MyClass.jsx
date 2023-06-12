@@ -4,9 +4,12 @@ import { FaRegEdit, FaTrashAlt } from 'react-icons/fa';
 
 const MyClass = () => {
     const [instructorClass, refetch] = useInstructorClasses();
-    console.log(instructorClass);
+    //console.log(instructorClass);
 
     const handleDelete = item => {
+
+    }
+    const handleUpdate = item =>{
 
     }
     return (
@@ -38,7 +41,7 @@ const MyClass = () => {
                                 <td>{item.feedbacks}</td>
                                 <td>
                                     <button onClick={() => handleUpdate(item)} className="btn btn-square btn-sm bg-blue-600 mr-2"><FaRegEdit color={'white'} size={15}></FaRegEdit></button>
-                                    <button onClick={() => handleDelete(user)} className="btn btn-square btn-sm bg-red-600"><FaTrashAlt color={'white'} size={15}></FaTrashAlt></button>
+                                    <button onClick={() => handleDelete(item)} className="btn btn-square btn-sm bg-red-600"><FaTrashAlt color={'white'} size={15}></FaTrashAlt></button>
                                 </td>
 
                             </tr>

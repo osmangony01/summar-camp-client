@@ -12,7 +12,7 @@ const Feedback = () => {
         e.preventDefault();
         const fk = e.target.feedback.value;
         const response = await axiosInstance.patch("/give-feedback", { id, fk });
-        console.log(response.data);
+        //console.log(response.data);
         const data = response.data;
         if (data.modifiedCount > 0) {
             Swal.fire({

@@ -11,7 +11,7 @@ const AdminHome = () => {
     }
 
     const { data: users = [], refetch } = useQuery(['users'], async () => {
-        const res = await fetch(`http://localhost:5000/users`, { headers });
+        const res = await fetch(`https://summar-camp-server.vercel.app/users`, { headers });
         return res.json();
     })
 

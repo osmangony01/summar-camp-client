@@ -4,7 +4,6 @@ import { Link, useRouteError } from 'react-router-dom';
 
 
 const ErrorRoute = () => {
-    
 
     const { error, status } = useRouteError()
     return (

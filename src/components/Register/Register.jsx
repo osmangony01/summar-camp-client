@@ -7,51 +7,6 @@ import Swal from "sweetalert2";
 
 
 const Register = () => {
-    // const [passError, setPassError] = useState("");
-    // const { createUser, updateUserData } = useContext(AuthContext);
-
-    // const navigate = useNavigate();
-    // useTitle('Register');
-
-    // const handleRegister = (e) => {
-    //     e.preventDefault();
-    //     const form = e.target;
-    //     const name = form.name.value;
-    //     const email = form.email.value;
-    //     const password = form.password.value;
-    //     const photo_url = form.photo_url.value;
-
-    //     setPassError("");
-    //     if (password.length < 6) {
-    //         setPassError("At least 6 characters needed!!");
-    //         return;
-    //     }
-    //     if (email === "" || password === "") {
-    //         return;
-    //     }
-
-    //     createUser(email, password)
-    //         .then(result => {
-    //             const CreateUser = result.user;
-    //             //console.log(CreateUser);
-    //             form.reset();
-    //             updateUserData(result.user, name, photo_url)
-    //                 .then(() => {
-    //                     console.log('user name updated ...');
-    //                 })
-    //                 .catch(error => {
-    //                     console.log(error.message);
-    //                 })
-    //             navigate("/", { replace: true });
-
-    //         })
-    //         .catch(error => {
-    //             console.log(error.message);
-    //         })
-
-    //     //console.log(name, email, password, photo_url);
-    // }
-
 
 
     const { createUser, updateUserData } = useContext(AuthContext);
@@ -61,7 +16,7 @@ const Register = () => {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
 
     const onSubmit = data => {
-        console.log(data);
+        //console.log(data);
         setConPassErr('');
         if(data.password !== data.confirm_password){
             setConPassErr("Password does not match!");
@@ -75,9 +30,9 @@ const Register = () => {
                 //reset();
                 updateUserData(result.user, data.name, data.photo_url)
                     .then(() => {
-                        console.log('user name updated ...');
+                        //console.log('user name updated ...');
                         const savedUser = { name: data.name, email: data.email, role: 'student', photo:data.photo_url };
-                        fetch(`http://localhost:5000/users`, {
+                        fetch(`https://summar-camp-server.vercel.app/users`, {
                             method: "POST",
                             headers: {
                                 'content-type': 'application/json'
@@ -108,7 +63,7 @@ const Register = () => {
             })
     }
 
-    console.log(watch("example"));
+    //console.log(watch("example"));
     return (
         <div className='bg-slate-200  pt-8 pb-16'>
             <div className='w-2/5 max-sm:w-11/12 max-md:w-3/4 max-lg:w-1/2 bg-white mx-auto py-8 px-12 max-sm:px-4 shadow rounded'>

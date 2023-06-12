@@ -13,15 +13,12 @@ const AllUser = () => {
     }
 
     const { data: users = [], refetch } = useQuery(['users'], async () => {
-        const res = await fetch(`http://localhost:5000/users`, { headers });
+        const res = await fetch(`https://summar-camp-server.vercel.app/users`, { headers });
         return res.json();
     })
 
-    const [isDisable, setIsDisable] = useState(false);
-    const { role } = useRole();
-
-   
-
+    // const [isDisable, setIsDisable] = useState(false);
+    // const { role } = useRole();
 
     const handleDelete = user => {
         // Swal.fire({
@@ -34,7 +31,7 @@ const AllUser = () => {
         //     confirmButtonText: 'Yes, delete it!'
         // }).then((result) => {
         //     if (result.isConfirmed) {
-        //         fetch(`http://localhost:5000/users/${user._id}`, { method: "DELETE" })
+        //         fetch(`https://summar-camp-server.vercel.app/users/${user._id}`, { method: "DELETE" })
         //             .then(res => res.json())
         //             .then(data => {
         //                 if (data.deletedCount > 0) {
@@ -51,26 +48,10 @@ const AllUser = () => {
         //     }
         // })
     }
-    // const handleMakeAdmin = (user) => {
-    //     fetch(`http://localhost:5000/user-role/${user._id}`, { method: "PATCH" })
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             console.log(data);
-    //             if (data.modifiedCount) {
-    //                 refetch();
-    //                 Swal.fire({
-    //                     position: 'top-end',
-    //                     icon: 'success',
-    //                     title: `${user.name} is an Admin Now`,
-    //                     showConfirmButton: false,
-    //                     timer: 1500
-    //                 })
-    //             }
-    //         })
-    // }
+   
     const handleMakeRole = async (user, roleName) => {
         const role = { id: user._id, name: roleName };
-        const res = await axios.patch('http://localhost:5000/user-role/', role)
+        const res = await axios.patch('https://summar-camp-server.vercel.app/user-role/', role)
         const response = res.data;
         if (response.modifiedCount) {
             refetch();

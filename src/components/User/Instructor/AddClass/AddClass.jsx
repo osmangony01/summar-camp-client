@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 const AddClass = () => {
 
     const { user } = useContext(AuthContext);
-    console.log(user.photoURL);
+    //console.log(user.photoURL);
 
     const handleAddClass = e => {
         e.preventDefault();
@@ -28,8 +28,8 @@ const AddClass = () => {
         const endDate = form.end_date.value;
 
         const savedClass = { className, image, instructorName, instructorEmail, instructorPhoto, availableSeat, price, enrollStudent, status, description, startDate, endDate, feedbacks };
-        console.log(savedClass);
-        fetch('http://localhost:5000/addclass', {
+        //console.log(savedClass);
+        fetch('https://summar-camp-server.vercel.app/addclass', {
             method: "POST",
             headers: {
                 'content-type': 'application/json'
@@ -38,7 +38,7 @@ const AddClass = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+                //console.log(data);
                 if (data.insertedId) {
                     Swal.fire({
                         position: 'center',
