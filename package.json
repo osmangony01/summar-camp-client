@@ -16,8 +16,6 @@
     "@tanstack/react-query": "^4.29.12",
     "axios": "^1.4.0",
     "firebase": "^9.22.1",
-    "flowbite": "^1.6.5",
-    "flowbite-react": "^0.4.7",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.1",
     "moment": "^2.29.4",

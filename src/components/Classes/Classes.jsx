@@ -4,6 +4,7 @@ import useApprovedClasses from "../../hooks/useApprovedClasses";
 import { useNavigate } from "react-router-dom";
 import addSelectedClass from "../../loader/addSelectedClass";
 import Banner from "../Home/Banner";
+import useRole from "../../hooks/useRole";
 
 const Classes = () => {
     const { user } = useContext(AuthContext);
@@ -19,9 +20,11 @@ const Classes = () => {
         }
     }
 
+    const isRole = useRole();
+
     return (
         <div>
-        <Banner></Banner>
+            <Banner></Banner>
             <div className="w-4/5 mx-auto my-12">
                 <h2 className="text-3xl text-orange-500 font-semibold mb-10 mt-16 text-center">All Classes Here</h2>
                 <div className="overflow-x-auto">
@@ -40,7 +43,7 @@ const Classes = () => {
                         </thead>
                         <tbody>
                             {
-                                approvedClasses.map((item, index) => <tr key={item._id}>
+                                approvedClasses.map((item, index) => <tr key={item._id} className={item.availableSeat == 0 && 'hover:bg-red-300'}>
                                     <td>{index + 1}</td>
                                     <td>
                                         <div className="avatar">
@@ -53,7 +56,7 @@ const Classes = () => {
                                     <td >{item.instructorName}</td>
                                     <td>{item.availableSeat}</td>
                                     <td>$ {item.price}</td>
-                                    <td><button onClick={() => handleClasses(item)} className="btn btn-outline btn-primary btn-sm">Choose</button></td>
+                                    <td><button onClick={() => handleClasses(item)} disabled={isRole.role === "admin" ? true : isRole.role === "instructor" ? true : item.availableSeat == 0 ? true : false} className="btn btn-outline btn-primary btn-sm">Choose</button></td>
                                 </tr>
                                 )
                             }

@@ -19,12 +19,16 @@ import EnrolledClass from "../components/User/Student/EnrolledClass/EnrolledClas
 import PaymentHistory from "../components/User/Student/PaymentHistory/PaymentHistory";
 import Payment from "../components/User/Student/Payement/Payment";
 import Instructor from "../components/Instructor/Instructor";
+import Feedback from "../components/User/Admin/Feedback";
+import ErrorRoute from "../components/ErrorPage/ErrorRoute";
+import isAdmin from "../private_route/isAdmin";
 
 
 const router = createBrowserRouter([
     {
         path: "/",
         element: <MainLayout></MainLayout>,
+        errorElement: <ErrorRoute></ErrorRoute>,
         children: [
             {
                 path: "/",
@@ -54,16 +58,21 @@ const router = createBrowserRouter([
         children: [
             {
                 path: "manage-users",
-                element: <AllUser></AllUser>
+                element:  <isAdmin><AllUser></AllUser></isAdmin>
             }, 
             {
                 path: "admin-home",
-                element: <AdminHome></AdminHome>
+                element: <isAdmin><AdminHome></AdminHome></isAdmin> 
             }, 
             {
                 path: "manage-classes",
-                element: <ManageClasses></ManageClasses>
+                element: <isAdmin><ManageClasses></ManageClasses></isAdmin>
             }, 
+            {
+                path: "feedback/:id",
+                element: <isAdmin><Feedback></Feedback></isAdmin>
+            }, 
+
             // instructor routes
             {
                 path: "instructor-home",

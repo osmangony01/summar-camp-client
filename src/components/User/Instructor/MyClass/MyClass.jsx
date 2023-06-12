@@ -37,7 +37,7 @@ const MyClass = () => {
                                 <td>{item.status}</td>
                                 <td>{item.feedbacks}</td>
                                 <td>
-                                    <button onClick={() => handleUpdate(item)} className="btn btn-square btn-sm bg-red-600"><FaRegEdit color={'white'} size={15}></FaRegEdit></button>
+                                    <button onClick={() => handleUpdate(item)} className="btn btn-square btn-sm bg-blue-600 mr-2"><FaRegEdit color={'white'} size={15}></FaRegEdit></button>
                                     <button onClick={() => handleDelete(user)} className="btn btn-square btn-sm bg-red-600"><FaTrashAlt color={'white'} size={15}></FaTrashAlt></button>
                                 </td>
 

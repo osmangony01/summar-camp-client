@@ -6,6 +6,7 @@ import Swal from "sweetalert2";
 const AddClass = () => {
 
     const { user } = useContext(AuthContext);
+    console.log(user.photoURL);
 
     const handleAddClass = e => {
         e.preventDefault();
@@ -14,14 +15,19 @@ const AddClass = () => {
         const image = form.photo_url.value;
         const instructorName = form.instructor_name.value;
         const instructorEmail = form.instructor_email.value;
+        const instructorPhoto = user.photoURL;
         const availableSeat = parseInt(form.available_seat.value);
         const price = parseFloat(form.price.value);
         const description = form.description.value;
         const status = 'pending';
         const feedbacks = "";
-        const enrollStudent=0;
+        const enrollStudent = 0;
+        //const experience = form.experience.value;
+        //const duration = form.duration.value;
+        const startDate = form.start_date.value;
+        const endDate = form.end_date.value;
 
-        const savedClass = { className, image, instructorName, instructorEmail, availableSeat, price,enrollStudent, status,description, feedbacks };
+        const savedClass = { className, image, instructorName, instructorEmail, instructorPhoto, availableSeat, price, enrollStudent, status, description, startDate, endDate, feedbacks };
         console.log(savedClass);
         fetch('http://localhost:5000/addclass', {
             method: "POST",
@@ -51,7 +57,7 @@ const AddClass = () => {
             <h2 className='text-center text-3xl mb-6  font-semibold'>Add New Class</h2>
 
             <form action="" onSubmit={handleAddClass}>
-                <div className='grid grid-cols-1 md:grid-cols-2 gap-5 mb-2'>
+                <div className='grid grid-cols-1 md:grid-cols-2 gap-5 mb-1'>
                     <div>
                         <label htmlFor="" className='label'>Name</label>
                         <div>
@@ -65,7 +71,7 @@ const AddClass = () => {
                         </div>
                     </div>
                 </div>
-                <div className='grid grid-cols-1 md:grid-cols-2 gap-5 mb-2'>
+                <div className='grid grid-cols-1 md:grid-cols-2 gap-5 mb-1'>
                     <div>
                         <label htmlFor="" className='label'>Instructor Name</label>
                         <div>
@@ -79,7 +85,7 @@ const AddClass = () => {
                         </div>
                     </div>
                 </div>
-                <div className='grid grid-cols-1 md:grid-cols-2 gap-5 mb-2'>
+                <div className='grid grid-cols-1 md:grid-cols-2 gap-5 mb-1'>
                     <div>
                         <label htmlFor="" className='label'>Available Seats</label>
                         <div>
@@ -90,6 +96,34 @@ const AddClass = () => {
                         <label htmlFor="" className='label'>Price</label>
                         <div>
                             <input type="text" name="price" placeholder='Enter Price' className='input-control-class focus:border-blue-500 focus:outline-0' />
+                        </div>
+                    </div>
+                </div>
+                {/* <div className='grid grid-cols-1 md:grid-cols-2 gap-5 mb-1'>
+                    <div>
+                        <label htmlFor="" className='label'>Experience</label>
+                        <div>
+                            <input type="number" name="experience" placeholder='Enter experience' className='input-control-class focus:border-blue-500 focus:outline-0' />
+                        </div>
+                    </div>
+                    <div>
+                        <label htmlFor="" className='label'>Duration (week)</label>
+                        <div>
+                            <input type="number" name="duration" placeholder='Enter duration (week)' className='input-control-class focus:border-blue-500 focus:outline-0' />
+                        </div>
+                    </div>
+                </div> */}
+                <div className='grid grid-cols-1 md:grid-cols-2 gap-5 mb-1'>
+                    <div>
+                        <label htmlFor="" className='label'>Start date</label>
+                        <div>
+                            <input type="date" name="start_date" placeholder='Enter start date' className='input-control-class focus:border-blue-500 focus:outline-0' />
+                        </div>
+                    </div>
+                    <div>
+                        <label htmlFor="" className='label'>End date</label>
+                        <div>
+                            <input type="date" name="end_date" placeholder='Enter end date' className='input-control-class focus:border-blue-500 focus:outline-0' />
                         </div>
                     </div>
                 </div>

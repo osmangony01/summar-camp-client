@@ -76,7 +76,7 @@ const Register = () => {
                 updateUserData(result.user, data.name, data.photo_url)
                     .then(() => {
                         console.log('user name updated ...');
-                        const savedUser = { name: data.name, email: data.email, role: 'student' };
+                        const savedUser = { name: data.name, email: data.email, role: 'student', photo:data.photo_url };
                         fetch(`http://localhost:5000/users`, {
                             method: "POST",
                             headers: {
@@ -94,13 +94,14 @@ const Register = () => {
                                         showConfirmButton: false,
                                         timer: 1500
                                     })
+                                    navigate("/", { replace: true });
                                 }
                             })
                     })
                     .catch(error => {
                         console.log(error.message);
                     })
-                navigate("/", { replace: true });
+                
             })
             .catch(error => {
                 console.log(error.message);

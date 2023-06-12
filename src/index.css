@@ -15,5 +15,5 @@
 }
 
 .manage-class-btn{
-    @apply text-sm py-1 px-1 rounded font-semibold mr-2
+    @apply py-1 px-1 rounded m-0 mr-2 lowercase text-sm
 }

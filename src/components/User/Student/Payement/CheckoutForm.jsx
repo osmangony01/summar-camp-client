@@ -3,7 +3,7 @@ import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../../../provider/AuthProvider';
 
-import './CheckoutForm.css';
+// import './CheckoutForm.css';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
 
@@ -148,11 +148,11 @@ const CheckoutForm = ({ selectedClass, price }) => {
                         },
                     }}
                 />
-                <button type="submit" className='px-4 text-black rounded-lg my-2 border border-blue-600 hover:bg-blue-600 hover:text-white' disabled={!stripe || !clientSecret || processing}>
+                <button type="submit" className='px-4 py-2  text-black rounded-lg mt-6 border border-blue-600 hover:bg-blue-600 hover:text-white' disabled={!stripe || !clientSecret || processing}>
                     Pay
                 </button>
             </form>
-            {cardError && <p className="text-red-600 ml-8">{cardError}</p>}
+            {cardError && <p className="text-red-600 mt-2">{cardError}</p>}
         </>
     );
 };

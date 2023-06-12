@@ -32,7 +32,7 @@ const Instructor = () => {
                                     <td>
                                         <div className="avatar">
                                             <div className="mask rounded-md w-[100px] h-[100px]">
-                                                <img src={item.image} alt="Avatar Tailwind CSS Component" />
+                                                <img src={item.instructorPhoto} alt="Avatar Tailwind CSS Component" />
                                             </div>
                                         </div>
                                     </td>

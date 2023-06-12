@@ -40,7 +40,7 @@ const SelectedClass = () => {
     return (
         <div>
             <div className="">
-                <h2 className="text-3xl text-orange-500 font-semibold my-10">My Classes</h2>
+                <h2 className="text-3xl text-orange-500 font-semibold my-10">My Selected Classes</h2>
                 <div className="overflow-x-auto">
                     <table className="table table-zebra text-sm">
                         <thead className=" bg-slate-200  text-black font-semibold">

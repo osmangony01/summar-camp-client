@@ -49,7 +49,7 @@ const Login = () => {
                 const loggedUser = result.user;
                 console.log(loggedUser);
                 navigate("/", { replace: true });
-                const savedUser = { name: loggedUser.displayName, email: loggedUser.email };
+                const savedUser = { name: loggedUser.displayName, email: loggedUser.email, role: 'student', photo:loggedUser.photoURL };
                 fetch(`http://localhost:5000/users`, {
                     method: "POST",
                     headers: {

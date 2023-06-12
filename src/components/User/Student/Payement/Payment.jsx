@@ -13,20 +13,22 @@ const Payment = () => {
     const selectedClass = useLoaderData();
 
     console.log(selectedClass);
-   
+
     const priceClass = selectedClass && selectedClass.price;
     const price = parseFloat(priceClass?.toFixed(2));
-    
+
 
     console.log("selected class :", selectedClass);
-    console.log("price :",price);
-   
+    console.log("price :", price);
+
     return (
         <div>
-            <h2>Payment</h2>
-            <Elements stripe={stripePromise}>
-                <CheckoutForm selectedClass={selectedClass} price={price}></CheckoutForm>
-            </Elements>
+            <h2 className='text-2xl text-center font-semibold mb-8'>Payment</h2>
+            <div className='w-2/3 mx-auto border border-blue-400 rounded-md p-10'>
+                <Elements stripe={stripePromise}>
+                    <CheckoutForm selectedClass={selectedClass} price={price}></CheckoutForm>
+                </Elements>
+            </div>
         </div>
     );
 };
