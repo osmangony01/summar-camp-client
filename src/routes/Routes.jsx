@@ -8,7 +8,6 @@ import Dashboard from "../components/Layout/Dashboard";
 import AllUser from "../components/User/Admin/AllUser/AllUser";
 import AdminHome from "../components/User/Admin/AdminHome/AdminHome";
 import InstructorHome from "../components/User/Instructor/InstructorHome/InstructorHome";
-import Random from "../components/User/Random";
 import Classes from "../components/Classes/Classes";
 import AddClass from "../components/User/Instructor/AddClass/AddClass";
 import MyClass from "../components/User/Instructor/MyClass/MyClass";
@@ -109,10 +108,7 @@ const router = createBrowserRouter([
                 loader: ({params}) => fetch(`https://summar-camp-server.vercel.app/booked-class/${params.id}`)
             },
             
-            {
-                path: "random",
-                element: <Random></Random>
-            }
+            
         ]
     }
 ]);

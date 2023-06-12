@@ -31,7 +31,7 @@ const Dashboard = () => {
                         <li><Link to="/dashboard/admin-home"><FaHome size={20}></FaHome><span className="font-semibold">Admin Home</span></Link></li>
                         <li><Link to="/dashboard/manage-users"><FaUsers size={20}></FaUsers><span className="font-semibold">Manage Users</span></Link></li>
                         <li><Link to="/dashboard/manage-classes"><RiPlayListAddFill size={20}></RiPlayListAddFill><span className="font-semibold">Manage Classes</span></Link></li>
-                        <li><Link to="/dashboard/random">Random</Link></li>
+                        
                     </>}
                     {isRole.role === 'instructor' && <>
                         <li><Link to="/dashboard/instructor-home"><FaHome size={20}></FaHome><span className="font-semibold">Instructor Home</span></Link></li>
@@ -43,7 +43,7 @@ const Dashboard = () => {
                         <li><Link to="/dashboard/my-selected-classes"><FaListUl size={20}></FaListUl><span className="font-semibold">My Selected classes</span></Link></li>
                         <li><Link to="/dashboard/my-enroll-classes"><BsFillBookmarkPlusFill size={20}></BsFillBookmarkPlusFill> <span className="font-semibold">My Enroll classes</span></Link></li>
                         <li><Link to="/dashboard/payment-history"><MdAddCard size={20}></MdAddCard><span className="font-semibold">Payment history</span></Link></li>
-                        <li><Link to="/dashboard/random">Random</Link></li>
+                       
                     </>}
                     <div className="divider ">OR</div>
                     <ul className="">
