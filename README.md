@@ -22,5 +22,5 @@ The WorldSpeak website is a Foreign  Language Learning School site
 
 [
     instructor-email: user2@gmail.com , 
-    instructor-pass: User22@
+    instructor-password: User22@
 ]
