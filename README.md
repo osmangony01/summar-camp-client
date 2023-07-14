@@ -11,8 +11,7 @@ The WorldSpeak website is a Foreign  Language Learning School site
 
 **Technology Used:** ReactJS, NodeJS, ExpressJS, MongoDB, Firebase, Axios, JWT, TailwindCSS.
 
-**Live site link:**  
-https://summarcamp-671bf.web.app/
+**Live site link:**  https://summarcamp-671bf.web.app/
 
 **Server-side Code link**: https://github.com/osmangony01/summar-camp-server
 
