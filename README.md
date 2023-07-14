@@ -20,7 +20,6 @@ https://summarcamp-671bf.web.app/
     admin-email: user1@gmail.com , 
     admin-password: User11@
 ]
-
 [
     instructor-email: user2@gmail.com , 
     instructor-pass: User22@
