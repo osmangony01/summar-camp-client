@@ -2,14 +2,25 @@
 The WorldSpeak website is a Foreign  Language Learning School site
 
 **Features:**
-- User Authentication with Firebase
-- User Management
+- User Authentication 
+- User Account Management
 - Role-Based Access Control
 - CRUD Operations with MongoDB
-- Class Management
-- Card Payment Gateway Integration
+- Class or Course Management
+- Card Payment Gateway Integration with Stripe
 
-**Technology:** The website was built using React JS and integrates Firebase for user authentication. Use Node JS , Express JS for the backend and also use MongoDB for Database. Also, In this website, implement Card Payment Gateway like Stripe.
+**Technology Used:** ReactJS, NodeJS, ExpressJS, MongoDB, Firebase, Axios, JWT, TailwindCSS.
 
-**Live site link:**   
-https://summarcamp-671bf.web.app/
+**Live site link:**  https://summarcamp-671bf.web.app/
+
+**Server-side Code link**: https://github.com/osmangony01/summar-camp-server
+##
+[
+    admin-email: user1@gmail.com , 
+    admin-password: User11@
+]
+
+[
+    instructor-email: user2@gmail.com , 
+    instructor-password: User22@
+]
