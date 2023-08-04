@@ -42,7 +42,7 @@ const Navbar = () => {
                     </label>
                     {
                         toggle && <div className="absolute left-0 top-10 lg:hidden z-20">
-                            <ul className="menu menu-compact mt-3 p-2 shadow bg-base-100 rounded-md w-52">
+                            <ul className="menu menu-compact mt-3 p-2 shadow bg-base-100 rounded-md w-52 text-[17px]">
                                 {navItems}
                             </ul>
                         </div>
@@ -54,14 +54,14 @@ const Navbar = () => {
                 </div>
             </div>
             <div className="navbar-center hidden lg:flex">
-                <ul className="menu menu-horizontal px-1">
+                <ul className="menu menu-horizontal px-1 text-[17px]">
                     {user && navItems}
                 </ul>
             </div>
             <div className="navbar-end">
                 {
                     !user && <div className="hidden lg:flex">
-                        <ul className="menu menu-horizontal px-1">
+                        <ul className="menu menu-horizontal px-1 text-[17px]">
                             {navItems}
                         </ul>
                     </div>

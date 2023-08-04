@@ -17,3 +17,45 @@
 .manage-class-btn{
     @apply py-1 px-1 rounded m-0 mr-2 lowercase text-sm
 }
+
+.classes:hover{
+    border:1px solid rgb(192, 224, 250);
+    box-shadow: 1px 1px 5px 2px rgb(194, 224, 248);
+}
+
+.btn-show-all-classes {
+    border: 0;
+    background: linear-gradient(90deg, #7082f7 0%, #855ef0 100%);
+    border-radius: 6px;
+    color: white;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    font-weight: 700;
+}
+.btn-show-all-classes:hover {
+    background: linear-gradient(90deg, #4e65fc 0%, #683be4 100%);
+}
+.instructors:hover{
+    border:1px solid #d6b4b4;
+    box-shadow: 1px 1px 5px 2px #e2c0c0;
+}
+
+.btn-show-all-instructor {
+    border: 1px solid #9873FF;
+    border-radius: 6px;
+    padding: 14px 20px;
+    text-decoration: none;
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.btn-show-all-instructor:hover{
+    background-color: #8628f1;
+    color: white;
+}
+
+.top-classes:hover{
+    border:1px solid rgb(200, 200, 202);
+    box-shadow: 1px 1px 5px 2px #bebdbd;
+}
