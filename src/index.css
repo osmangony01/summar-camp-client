@@ -17,10 +17,25 @@
 .manage-class-btn{
     @apply py-1 px-1 rounded m-0 mr-2 lowercase text-sm
 }
+.contact-input{
+    @apply box-border py-2 md:py-2.5  px-3 rounded-md border border-transparent outline-none  w-full my-2 md:my-4 
+}
+
+.contact-input:focus{
+    border:1px solid rgb(253, 182, 115);
+    box-shadow: 1px 1px 5px 2px rgb(253, 182, 115);
+}
+.contact-input:hover{
+    border:1px solid rgb(253, 195, 140);
+}
 
 .classes:hover{
     border:1px solid rgb(192, 224, 250);
     box-shadow: 1px 1px 5px 2px rgb(194, 224, 248);
+}
+
+.contact-btn{
+    @apply py-3 px-6 bg-purple-600 hover:bg-purple-900 font-semibold text-white rounded-md border-0
 }
 
 .btn-show-all-classes {

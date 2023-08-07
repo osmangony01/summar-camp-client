@@ -34,7 +34,7 @@ const Navbar = () => {
 
     return (
 
-        <div className="navbar bg-base-100 px-10">
+        <div className="navbar bg-base-100 md:px-10 font-['Segoe UI'] font-semibold">
             <div className="navbar-start">
                 <div className="relative" onClick={() => setToggle(!toggle)}>
                     <label tabIndex={0} className="btn btn-ghost lg:hidden m-0">

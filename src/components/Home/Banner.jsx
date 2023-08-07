@@ -8,9 +8,9 @@ const Banner = () => {
 
     const bannerContent = <>
         <div className="absolute h-full left-0 top-0 right-0 bg-[#151515] bg-opacity-50">
-            <div className=' absolute  w-[2/3] md:w-[2/4] text-white space-y-5 top-10 left-12 right-12 md:right-0  md:left-[calc(50%-300px)] md:top-[calc(50%-150px)]'>
-                <h2 className='text-lg font-bold sm:text-2xl md:text-5xl' >Discover a Universe <br /> of Language Learning</h2>
-                <p className=''>Embrace the world, one language at a time, and unlock a universe of possibilities. <br />Discover the beauty of language and broaden your horizons <br /> with our immersive learning experience</p>
+            <div className='absolute md:w-[2/4] text-white space-y-5 top-10 left-24 right-12 md:right-0  md:left-[calc(50%-300px)] md:top-[calc(50%-150px)]'>
+                <h2 className='text-xl font-bold sm:text-3xl md:text-5xl' >Discover a Universe <br /> of Language Learning</h2>
+                <p className='hidden sm:block'>Embrace the world, one language at a time, and unlock a universe of possibilities. <br />Discover the beauty of language and broaden your horizons <br /> with our immersive learning experience</p>
                 <div>
                     <button className="btn btn-primary bg-purple-600 mr-4 border-0">Discover More</button>
                 </div>
