@@ -19,7 +19,7 @@ const InstructorSection = () => {
             <div className=" w-full md:w-4/5 lg:w-3/4 mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
 
                 {
-                    instructors.map(item => <div key={item._id} className="card bg-base-100 hover:bg-blue-200 rounded-md">
+                    instructors.map(item => <div key={item._id} className="card bg-base-200  rounded-md instructor-shadow">
                         <figure><img src={item.instructorPhoto} className="w-full h-[200px]" alt="img" /></figure>
                         <div className="flex flex-col p-4 gap-1">
                             <h2 className="card-title">{item.instructorName}</h2>

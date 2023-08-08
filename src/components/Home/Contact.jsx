@@ -7,11 +7,11 @@ import { IoLocationOutline } from "react-icons/io5";
 const Contact = () => {
     return (
         <div className="my-20">
-            <h2 className="text-3xl font-bold text-center pb-20 pt-5">Contact</h2>
+            <h2 className="text-3xl font-bold text-center pb-20 pt-5">Contact US</h2>
             <div className="w-full px-6 md:px-0 md:w-4/5 lg:w-3/4 mx-auto grid grid-col-1 md:grid-cols-2 gap-16">
                 <div>
                     <h2 className="text-2xl font-bold mb-4">Get in Touch</h2>
-                    <div className="mb-8">asdlf asdf asdf asdf asdfd asdfa ;lkj asdfads ;lakjasdfa ;ljkasdf ;lkjasdfg ;lkjh asdfg ;lkjh asdf ;ljasdf asdl;fkjh asdfg ;ljkh asdfg ;ljka sdfgg ;lja sdfg ;lkjh asdg ;lkjhasg ;lkjh asdfgg ;ljh asdfg l;jkh asdfg ;ljkh asdf ;ljkh asdg ;ljkhasdfg 
+                    <div className="mb-8"> Got questions or feedback? We're here to help! Reach out to us through our contact page for prompt assistance. Your thoughts matter, and we're excited to connect with you.
                     </div>
                     <div>
                         <div className="flex mb-8">

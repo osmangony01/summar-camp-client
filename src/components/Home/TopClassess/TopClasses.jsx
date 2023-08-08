@@ -9,14 +9,14 @@ import useRole from "../../../hooks/useRole";
 const TopClasses = () => {
     const [approvedClass] = useApprovedClasses();
     //console.log(approvedClass);
-    
+
     const isRole = useRole();
-    
+
     const sortedClass = approvedClass.sort((a, b) => b.enrollStudent - a.enrollStudent);
 
     let topClasses = [];
     if (approvedClass.length > 6) {
-        topClasses = sortedClass.slice(0,6);
+        topClasses = sortedClass.slice(0, 6);
     }
     else {
         topClasses = sortedClass;
@@ -41,15 +41,15 @@ const TopClasses = () => {
                 {
                     topClasses.map(item => <div key={item._id} className={`card bg-base-100 top-classes border rounded-md ${item.availableSeat == 0 && 'hover:bg-red-300'}`}>
                         <figure><img src={item.image} className="w-full h-[200px]" alt="Shoes" /></figure>
-                        <div className="flex flex-col p-4 gap-1">
-                            <h2 className="card-title">{item.className} </h2>
+                        <div className="flex flex-col px-4 pt-4 pb-2 gap-1">
+                            <h2 className="card-title">{item.className} Language</h2>
                             <p>{item.description}</p>
                             <div className="card-actions justify-end">
                                 <div className="badge badge-secondary ">$ {item.price}</div>
                             </div>
                             <div className="divider mt-2 mb-2"></div>
-                            <div>
-                                <button onClick={() => handleClasses(item)} disabled={isRole.role ==="admin" ? true : isRole.role === "instructor" ? true: item.availableSeat === 0 ? true : false} className="btn btn-outline btn-primary btn-sm">Choose</button>
+                            <div className="flex justify-end">
+                                <button onClick={() => handleClasses(item)} disabled={isRole.role === "admin" ? true : isRole.role === "instructor" ? true : item.availableSeat === 0 ? true : false} className="btn btn-outline btn-primary btn-sm ">Enroll Now</button>
                             </div>
                         </div>
                     </div>)
