@@ -3,17 +3,17 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 import Swal from "sweetalert2";
+import useTitle from "../../hooks/useTitle";
 
 
 
 const Register = () => {
-
-
     const { createUser, updateUserData } = useContext(AuthContext);
     const navigate = useNavigate();
     const [conPassErr, setConPassErr] = useState('');
 
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    useTitle('Register');
 
     const onSubmit = data => {
         //console.log(data);

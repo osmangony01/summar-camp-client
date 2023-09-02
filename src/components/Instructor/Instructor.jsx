@@ -1,13 +1,15 @@
 import { useState } from "react";
 import useApprovedClasses from "../../hooks/useApprovedClasses";
-import Banner from "../Home/Banner";
+import Banner from '../../components/Banner/Banner';
 import { useEffect } from "react";
+import useTitle from "../../hooks/useTitle";
 
 
 const Instructor = () => {
     const [approvedClasses] = useApprovedClasses();
     const [instructor, setInstructor] = useState([]);
     const [isShowAll, setIsShowAll] = useState(true);
+    useTitle('Instructor');
 
     useEffect(() => {
         const sixInstructor = approvedClasses.slice(0, 6);
@@ -20,7 +22,7 @@ const Instructor = () => {
 
     return (
         <div>
-            <Banner></Banner>
+            <Banner img="../../../public/images/banner/t1.jpg" label="Home | Instructor "></Banner>
             <div className="my-12">
                 <h2 className="text-3xl text-orange-500 font-semibold mt-16 mb-10 text-center">All Instructors</h2>
                 <div className="w-full md:w-4/5 lg:w-3/4 mx-auto  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12 pt-5">

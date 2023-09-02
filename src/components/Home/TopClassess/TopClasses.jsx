@@ -35,8 +35,8 @@ const TopClasses = () => {
     }
 
     return (
-        <div className="my-10 mx-10 md:mx-0">
-            <h2 className="text-3xl text-center font-semibold my-10">Top Popular Classes</h2>
+        <div className="mb-16 mt-20 mx-10 md:mx-0">
+            <h2 className="text-3xl text-center font-semibold mt-10 mb-16">Top Popular Classes</h2>
             <div className="w-full md:w-4/5 lg:w-3/4 mx-auto  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
                 {
                     topClasses.map(item => <div key={item._id} className={`card bg-base-100 top-classes border rounded-md ${item.availableSeat == 0 && 'hover:bg-red-300'}`}>

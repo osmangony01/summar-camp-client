@@ -3,10 +3,11 @@ import { AuthContext } from "../../provider/AuthProvider";
 import useApprovedClasses from "../../hooks/useApprovedClasses";
 import { useNavigate } from "react-router-dom";
 import addSelectedClass from "../../loader/addSelectedClass";
-import Banner from "../Home/Banner";
+import Banner from '../../components/Banner/Banner';
 import useRole from "../../hooks/useRole";
 import { useState } from "react";
 import profileImg from "../../../public/images/profile.webp";
+import useTitle from "../../hooks/useTitle";
 
 const Classes = () => {
     const { user } = useContext(AuthContext);
@@ -14,7 +15,8 @@ const Classes = () => {
     const [classes, setClasses] = useState([]);
     const [isShowAll, setIsShowAll] = useState(true);
     const navigate = useNavigate();
-
+    useTitle('Classes');
+    
     useEffect(() => {
         const sixClass = approvedClasses.slice(0, 6);
         setClasses(isShowAll ? sixClass : approvedClasses);
@@ -37,7 +39,7 @@ const Classes = () => {
 
     return (
         <div>
-            <Banner></Banner>
+            <Banner img="../../../public/images/banner/c3.jpg" label="Home | Courses "></Banner>
             <div className="my-12">
                 <h2 className="text-3xl text-orange-500 font-semibold mb-10 mt-16 text-center">All Classes Here</h2>
                 <div className="w-full md:w-4/5 lg:w-3/4 mx-auto  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

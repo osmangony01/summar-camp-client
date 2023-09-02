@@ -2,6 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,600;1,400;1,600&display=swap');
+
+html,
+body,
+label {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+}
+
+
 .input-control {
     @apply w-full bg-slate-100 box-border py-1.5 px-3 rounded border-transparent border outline-none
 }
@@ -11,32 +21,38 @@
 }
 
 .input-control-class {
-    @apply w-full border px-4 py-1.5 rounded placeholder:text-sm
+    @apply w-full border px-4 py-1.5 rounded 
 }
+/* placeholder: text-sm */
 
-.manage-class-btn{
+.manage-class-btn {
     @apply py-1 px-1 rounded m-0 mr-2 lowercase text-sm
 }
-.contact-input{
-    @apply box-border py-2 md:py-2.5  px-3 rounded-md border border-transparent outline-none  w-full my-2 md:my-4 
+
+.contact-input {
+    @apply box-border py-2  px-3 rounded-md border border-[#d1d0d0] outline-none w-full my-2 
+}
+/* md: py-2.5
+md:my-4 */
+
+.contact-input:focus {
+    border: 1px solid purple;
+    /* box-shadow: 1px 1px 5px 2px rgb(253, 182, 115); */
 }
 
-.contact-input:focus{
-    border:1px solid rgb(253, 182, 115);
-    box-shadow: 1px 1px 5px 2px rgb(253, 182, 115);
-}
-.contact-input:hover{
-    border:1px solid rgb(253, 195, 140);
+/* .contact-input:hover {
+    border: 1px solid rgb(110, 110, 110);
+} */
+
+.classes:hover {
+    border: 1px solid rgb(192, 224, 250);
+    box-shadow: 1px 1px 5px 2px rgb(219, 220, 221);
 }
 
-.classes:hover{
-    border:1px solid rgb(192, 224, 250);
-    box-shadow: 1px 1px 5px 2px rgb(194, 224, 248);
+.contact-btn {
+    @apply py-3 px-4 bg-purple-500  text-[15px] font-semibold text-white rounded-md border-0
 }
-
-.contact-btn{
-    @apply py-3 px-6 bg-purple-600 hover:bg-purple-900 font-semibold text-white rounded-md border-0
-}
+/* hover: bg-purple-900 */
 
 .btn-show-all-classes {
     border: 0;
@@ -48,11 +64,13 @@
     font-size: 17px;
     font-weight: 700;
 }
+
 .btn-show-all-classes:hover {
     background: linear-gradient(90deg, #4e65fc 0%, #683be4 100%);
 }
-.instructors:hover{
-    border:1px solid #d6b4b4;
+
+.instructors:hover {
+    border: 1px solid #d6b4b4;
     box-shadow: 1px 1px 5px 2px #e2c0c0;
 }
 
@@ -65,16 +83,21 @@
     font-weight: 700;
 }
 
-.btn-show-all-instructor:hover{
+.btn-show-all-instructor:hover {
     background-color: #8628f1;
     color: white;
 }
 
-.top-classes:hover{
-    border:1px solid rgb(200, 200, 202);
+.top-classes:hover {
+    border: 1px solid rgb(200, 200, 202);
     box-shadow: 1px 1px 5px 2px #bebdbd;
 }
 
-.instructor-shadow:hover{
+.instructor-shadow:hover {
     box-shadow: 1px 1px 5px 2px #c86dfc;
+}
+
+.contact-form:hover{
+    border: 1px solid rgb(200, 200, 202);
+    box-shadow: 1px 1px 2px 1px #e4ccfc;
 }
