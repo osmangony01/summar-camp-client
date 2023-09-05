@@ -6,7 +6,11 @@ export default {
     "node_modules/flowbite-react/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      screens: {
+        'sx': '600px',
+      }
+    },
   },
   plugins: [
     require("daisyui"),require('flowbite/plugin')

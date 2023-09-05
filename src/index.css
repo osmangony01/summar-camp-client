@@ -50,7 +50,7 @@ md:my-4 */
 }
 
 .contact-btn {
-    @apply py-3 px-4 bg-purple-500  text-[15px] font-semibold text-white rounded-md border-0
+    @apply py-2.5 px-4 bg-purple-500  text-[15px] font-semibold text-white rounded-md border-0
 }
 /* hover: bg-purple-900 */
 
@@ -77,14 +77,14 @@ md:my-4 */
 .btn-show-all-instructor {
     border: 1px solid #9873FF;
     border-radius: 6px;
-    padding: 14px 20px;
+    padding: 10px 20px;
     text-decoration: none;
     font-size: 17px;
     font-weight: 700;
 }
 
 .btn-show-all-instructor:hover {
-    background-color: #8628f1;
+    background-color: #6e0cdd;
     color: white;
 }
 
@@ -100,4 +100,32 @@ md:my-4 */
 .contact-form:hover{
     border: 1px solid rgb(200, 200, 202);
     box-shadow: 1px 1px 2px 1px #e4ccfc;
+}
+
+.instructor{
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-row-gap: 50px;
+}
+
+
+@media only screen and (min-width:600px){
+    .instructor{
+        grid-template-columns: 210px 1fr;
+    }
+}
+
+.course-details{
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+}
+
+@media only screen and (max-width:1000px){
+    .course-details{
+        grid-template-columns: 1fr;
+    }
+}
+
+.instructor-img:hover{
+    box-shadow: 1px 1px 5px 2px #fffefe;
 }

@@ -23,6 +23,7 @@ import ErrorRoute from "../components/ErrorPage/ErrorRoute";
 //import isAdmin from "../private_route/isAdmin";
 import Contact from "../components/Contact/Contact";
 import New from "../new/New";
+import CourseDetails from "../components/CourseDetails/CourseDetails";
 
 const router = createBrowserRouter([
     {
@@ -53,6 +54,10 @@ const router = createBrowserRouter([
             {
                 path:"/contact",
                 element:<Contact></Contact>
+            },
+            {
+                path: "/course-details/:id",
+                element: <PrivateRoute><CourseDetails></CourseDetails></PrivateRoute>
             }
         ]
     },

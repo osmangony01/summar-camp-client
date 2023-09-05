@@ -81,11 +81,11 @@ const Login = () => {
                 <form action="" className='px-4' onSubmit={handleLogin}>
                     <div className='mb-3'>
                         <label htmlFor="" className='block mb-1.5'>Email</label>
-                        <input type="email" name="email" className='input-control hover:border-blue-400 focus:border-blue-400' placeholder='Enter your email' required />
+                        <input type="email" name="email" className='input-control hover:border-blue-400 focus:border-blue-400 placeholder:text-sm' placeholder='Enter your email' required />
                     </div>
                     <div className='mb-3 relative'>
                         <label htmlFor="" className='block  mb-1.5'>Password</label>
-                        <input type={passShow ? "password" : "text"} name="password" className='input-control hover:border-blue-400 focus:border-blue-400' placeholder='Enter your password' />
+                        <input type={passShow ? "password" : "text"} name="password" className='input-control hover:border-blue-400 focus:border-blue-400 placeholder:text-sm' placeholder='Enter your password' />
                         <small onClick={() => setPassShow(!passShow)} className='absolute right-6 top-11 text-base text-slate-600' required>
                             {passShow ? <span>{<FaEyeSlash></FaEyeSlash>}</span> : <span>{<FaEye></FaEye>}</span>}
                         </small>

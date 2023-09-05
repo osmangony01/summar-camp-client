@@ -25,13 +25,13 @@ const Navbar = () => {
     //console.log(isRole);
 
     const navItems = <>
-        <li><ActiveLink to="/">Home</ActiveLink></li>
-        <li><ActiveLink to="/classes">Courses</ActiveLink></li>
-        <li><ActiveLink to="/instructors">Instructors</ActiveLink></li>
-        <li><ActiveLink to="/contact">Contact</ActiveLink></li>
+        <li><ActiveLink to="/">HOME</ActiveLink></li>
+        <li><ActiveLink to="/classes"> COURSES</ActiveLink></li>
+        <li><ActiveLink to="/instructors"> INSTRUCTORS</ActiveLink></li>
+        <li><ActiveLink to="/contact"> CONTACT</ActiveLink></li>
 
-        {user && <li><ActiveLink to={isRole.role === "admin" ? "/dashboard/admin-home" : isRole.role === 'instructor' ? "/dashboard/instructor-home" : "/dashboard/student-home"}>Dashboard</ActiveLink></li>}
-        {!user && <li><ActiveLink to="/login">Sign In</ActiveLink></li>}
+        {user && <li><ActiveLink to={isRole.role === "admin" ? "/dashboard/admin-home" : isRole.role === 'instructor' ? "/dashboard/instructor-home" : "/dashboard/student-home"}>PROFILE</ActiveLink></li>}
+        {!user && <li><ActiveLink to="/login">SIGN IN</ActiveLink></li>}
     </>
     // bg-transparent
     return (
@@ -46,7 +46,7 @@ const Navbar = () => {
                         </label>
                         {
                             toggle && <div className="absolute left-0 top-10 lg:hidden z-20">
-                                <ul className="menu menu-compact mt-3 p-2 shadow bg-base-100 rounded-md w-52 text-[#ece9e9]  text-[15px]">
+                                <ul className="menu menu-compact mt-3 p-2 shadow bg-base-100 rounded-md w-52 text-black  text-sm">
                                     {navItems}
                                 </ul>
                             </div>
@@ -57,15 +57,15 @@ const Navbar = () => {
                         <a className="btn btn-ghost normal-case text-xl md:text-2xl">WorldSpeak</a>
                     </div>
                 </div>
-                <div className="navbar-center hidden lg:flex">
-                    <ul className="menu menu-horizontal px-1 text-[#ece9e9]  text-[15px]">
+                {/* <div className="navbar-center hidden lg:flex">
+                    <ul className="menu menu-horizontal px-1 text-[#ece9e9]  text-sm">
                         {user && navItems}
                     </ul>
-                </div>
+                </div> */}
                 <div className="navbar-end">
                     {
-                        !user && <div className="hidden lg:flex">
-                            <ul className="menu menu-horizontal px-1 text-[#ece9e9]  text-[15px]">
+                        <div className="hidden lg:flex">
+                            <ul className="menu menu-horizontal px-1 text-[#ece9e9]  text-sm">
                                 {navItems}
                             </ul>
                         </div>
@@ -79,8 +79,8 @@ const Navbar = () => {
                                 </div>
                             </label>
                             {
-                                userControl && <div className="absolute right-0 top-10 z-10">
-                                    <ul className="menu menu-compact mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+                                userControl && <div className="absolute right-0 top-10 z-10 text-black">
+                                    <ul className="menu menu-compact mt-3 p-2 shadow bg-base-100 rounded-md w-52">
                                         <li><span>{user.email}</span></li>
                                         <li onClick={handleLogOut}><a>Sign Out</a></li>
                                     </ul>

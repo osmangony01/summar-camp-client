@@ -2,9 +2,10 @@ import About from "./About";
 import ExtraSection from "./ExtraSection";
 import InstructorSection from "./InstructorSection";
 import Newsletter from "./Newsletter";
-import TopClasses from "./TopClassess/TopClasses";
+import TopClasses from "./TopClasses";
 import useTitle from "../../hooks/useTitle";
 import BannerHome from "./BannerHome";
+//import Result from "./Result";
 
 
 const Home = () => {
@@ -15,6 +16,7 @@ const Home = () => {
             <TopClasses></TopClasses>
             <InstructorSection></InstructorSection>
             <ExtraSection></ExtraSection>
+            {/* <Result></Result> */}
             <Newsletter></Newsletter>
             <About></About>
         </div>

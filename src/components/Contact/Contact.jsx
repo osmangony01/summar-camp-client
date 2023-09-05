@@ -8,7 +8,7 @@ import Banner from '../../components/Banner/Banner';
 const Contact = () => {
     return (
         <div>
-            <Banner img="../../../public/images/banner/b1.png" label="Home | Contact US "></Banner>
+            <Banner img="../../../public/images/banner/con1.png" label="Home | Contact US "></Banner>
             {/* <div className="my-20">
                 <h2 className="text-center text-4xl font-bold pb-20 ">Contact US</h2>
                 <div>
@@ -70,7 +70,7 @@ const Contact = () => {
                 <div>
 
                 </div>
-                <div className="w-full px-6 md:px-0 md:w-4/5 lg:w-4/5 mx-auto grid grid-col-1 md:grid-cols-2 gap-16">
+                <div className="w-full px-6 md:px-0 md:w-4/5  mx-auto grid grid-col-1 md:grid-cols-2 gap-16">
                     <div>
                         <div>
                             <h2 className="text-2xl font-bold mb-4">Get in Touch</h2>
