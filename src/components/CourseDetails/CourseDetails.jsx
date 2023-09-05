@@ -1,5 +1,4 @@
 import React from 'react';
-import Banner from '../Banner/Banner';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { FaCalendarDays } from "react-icons/fa6";
 import priceImg from "../../../public/images/icon-price.svg";
@@ -12,6 +11,7 @@ import useRole from '../../hooks/useRole';
 import { useContext } from 'react';
 import { AuthContext } from '../../provider/AuthProvider';
 import addSelectedClass from '../../loader/addSelectedClass';
+import CourseDetailsImg from '../../../public/images/banner/c3.jpg';
 
 const CourseDetails = () => {
     const location = useLocation();
@@ -23,24 +23,27 @@ const CourseDetails = () => {
     const handleClasses = (item) => {
         if (user) {
             addSelectedClass(item, user);
-
         }
         else {
             navigate("/login", { replace: true });
         }
     }
 
-    console.log(location);
+    // console.log(location);
     const { availableSeat, className, description, endDate, enrollStudent, feedbacks, image, instructorEmail, instructorName, instructorPhoto, price, startDate, status, _id
     } = location.state;
 
     return (
         <div className=''>
-            <Banner img="../../../public/images/banner/c3.jpg" label=""></Banner>
-            {/* <div className='relative mt-[-60px] text-white'>
-                <div className='text-xl'>{className} Language</div>
-                <div className='flex  items-center'><FaCalendarDays></FaCalendarDays>{startDate}</div>
-            </div> */}
+          
+            <div className='relative'>
+                <img src={CourseDetailsImg} className="h-[240px] sm:h-[280px] md:h-[350px] xl:h-[420px] w-full" alt="img" />
+                <div className="absolute h-full left-0 top-0 right-0 bg-[#050505] bg-opacity-70">
+                    <div className='absolute top-1/2 left-[calc(50%-69px)] text-lg text-[#cfcfcf]'>
+
+                    </div>
+                </div>
+            </div>
 
             <div className="mb-16 mt-20 mx-10 sm:mx-32 md:mx-5 lg:mx-0">
                 <div className='w-full md:w-2/3 lg:w-4/5 mx-auto'>
@@ -111,11 +114,6 @@ const CourseDetails = () => {
                                 <span>Duration : 35h</span>
                             </div>
                             <hr />
-
-                            <div>
-
-                            </div>
-                            <div></div>
                         </div>
                     </div>
                 </div>
