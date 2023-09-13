@@ -2,6 +2,7 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 import axios from "axios";
+import axiosInstance from "../routes/axiosInstance";
 
 const useRole = () => {
     const { user } = useContext(AuthContext);
@@ -11,8 +12,9 @@ const useRole = () => {
         const fetchRole = async () => {
             if (user?.email) {
                 try {
-                    const response = await axios.get(`https://summar-camp-server.vercel.app/user?email=${user.email}`);
+                    const response = await axiosInstance.get(`/find-user?email=${user.email}`);
                     //const data = await response.json();
+                    
                     const data = response.data;
                     setIsRole(data);
                 }

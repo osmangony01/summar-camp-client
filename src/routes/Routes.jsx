@@ -20,9 +20,7 @@ import Payment from "../components/User/Student/Payement/Payment";
 import Instructor from "../components/Instructor/Instructor";
 import Feedback from "../components/User/Admin/Feedback";
 import ErrorRoute from "../components/ErrorPage/ErrorRoute";
-//import isAdmin from "../private_route/isAdmin";
 import Contact from "../components/Contact/Contact";
-import New from "../new/New";
 import CourseDetails from "../components/CourseDetails/CourseDetails";
 
 const router = createBrowserRouter([
@@ -121,10 +119,7 @@ const router = createBrowserRouter([
             
         ]
     },
-    // {
-    //     path: "/new",
-    //     element: <New></New>
-    // }
+  
 
 ]);
 

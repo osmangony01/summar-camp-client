@@ -48,22 +48,3 @@ const InstructorSection = () => {
 
 export default InstructorSection;
 
-{/* < div key={item._id} className="instructor gap-5">
-                            <div className="relative">
-                                <img src={item.instructorPhoto} className="w-[300px] h-[300px] lg:w-[210px] lg:h-[210px] rounded" alt="img" />
-                                <div className="absolute bottom-4 left-4 flex">
-                                    <span className="px-2"><FaFacebookF ></FaFacebookF></span>
-                                    <span className="px-2"><FaInstagram></FaInstagram></span>
-                                    <span className="px-2"><FaTwitter></FaTwitter></span>
-                                    <span className="px-2"><FaLinkedinIn></FaLinkedinIn></span>
-                                </div>
-                            </div>
-                            <div className="relative h-[300px] lg:h-[210px]">
-                                <h2 className="text-2xl font-semibold">{item.instructorName}</h2>
-                                <div className="text-base text-[#d1d0d0]">{item.className} Language Teacher</div>
-                                <div className="text-base text-[#d1d0d0] pt-4 ">A lyrical language with deep cultural heritage, spoken by millions worldwide and revered for its beauty.</div>
-                                <div className="absolute bottom-0 left-0">
-                                    <button className="px-4 text-sm text-[#d1d0d0] rounded py-1 border border-slate-300 hover:bg-black">VIEW PROFILE</button>
-                                </div>
-                            </div>
-                        </div> */}

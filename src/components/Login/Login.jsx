@@ -8,7 +8,6 @@ import useTitle from '../../hooks/useTitle';
 
 const Login = () => {
 
-
     const [passShow, setPassShow] = useState(true);
     const [error, setError] = useState("");
 
@@ -49,10 +48,10 @@ const Login = () => {
         signInWithGoogle()
             .then(result => {
                 const loggedUser = result.user;
-                console.log(loggedUser);
+                //console.log(loggedUser);
                 navigate("/", { replace: true });
                 const savedUser = { name: loggedUser.displayName, email: loggedUser.email, role: 'student', photo:loggedUser.photoURL };
-                fetch(`https://summar-camp-server.vercel.app/users`, {
+                fetch(`https://summar-camp-server.vercel.app/add-user`, {
                     method: "POST",
                     headers: {
                         'content-type': 'application/json'

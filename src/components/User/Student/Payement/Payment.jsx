@@ -2,14 +2,17 @@
 import { Elements } from '@stripe/react-stripe-js';
 import CheckoutForm from './CheckoutForm';
 import { loadStripe } from '@stripe/stripe-js';
-import { useLoaderData, useParams } from 'react-router-dom';
+import { useLoaderData, useLocation, useParams } from 'react-router-dom';
 
 
 const stripePromise = loadStripe(import.meta.env.VITE_Payment_Gateway_PK);
 
 const Payment = () => {
 
-    const selectedClass = useLoaderData();
+    const location = useLocation();
+    //console.log(location)
+    //const selectedClass = useLoaderData();
+    const selectedClass = location.state;
 
     //console.log(selectedClass);
 

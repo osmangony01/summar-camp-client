@@ -8,13 +8,10 @@ const Feedback = () => {
     const { id } = useParams();
     const navigate = useNavigate();
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        const fk = e.target.feedback.value;
-        const response = await axiosInstance.patch("/give-feedback", { id, fk });
-        //console.log(response.data);
+    const feedback = async (fb) => {
+        const response = await axiosInstance.patch("/feedback", {...fb})
         const data = response.data;
-        if (data.modifiedCount > 0) {
+        if (data.ok) {
             Swal.fire({
                 position: 'top-end',
                 icon: 'success',
@@ -24,6 +21,14 @@ const Feedback = () => {
             })
             navigate("/dashboard/manage-classes", {replace:true});
         }
+    }
+
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const fb = { fk:e.target.feedback.value, id }
+        feedback(fb);
+        
     }
 
     return (

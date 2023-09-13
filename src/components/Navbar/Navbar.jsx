@@ -33,7 +33,7 @@ const Navbar = () => {
         {user && <li><ActiveLink to={isRole.role === "admin" ? "/dashboard/admin-home" : isRole.role === 'instructor' ? "/dashboard/instructor-home" : "/dashboard/student-home"}>PROFILE</ActiveLink></li>}
         {!user && <li><ActiveLink to="/login">SIGN IN</ActiveLink></li>}
     </>
-    // bg-transparent
+    
     return (
         <div className="relative">
 
@@ -57,11 +57,7 @@ const Navbar = () => {
                         <a className="btn btn-ghost normal-case text-xl md:text-2xl">WorldSpeak</a>
                     </div>
                 </div>
-                {/* <div className="navbar-center hidden lg:flex">
-                    <ul className="menu menu-horizontal px-1 text-[#ece9e9]  text-sm">
-                        {user && navItems}
-                    </ul>
-                </div> */}
+              
                 <div className="navbar-end">
                     {
                         <div className="hidden lg:flex">

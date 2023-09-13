@@ -10,10 +10,10 @@ const ManageClasses = () => {
 
     const handleUpdateStatus = async (id, status) => {
         const updateStatus = { id: id, status: status }
-        const response = await axiosInstance.patch("/update-status", updateStatus);
+        const response = await axiosInstance.patch("/course-approve", {...updateStatus});
         //console.log(response.data);
         const data = response.data;
-        if (data.modifiedCount > 0) {
+        if (data.ok) {
             refetch();
             Swal.fire({
                 position: 'top-end',

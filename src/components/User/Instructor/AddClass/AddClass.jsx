@@ -1,12 +1,28 @@
 import { useContext } from "react";
 import { AuthContext } from "../../../../provider/AuthProvider";
 import Swal from "sweetalert2";
+import axiosInstance from "../../../../routes/axiosInstance";
 
 
 const AddClass = () => {
 
     const { user } = useContext(AuthContext);
     //console.log(user.photoURL);
+
+
+    const addCourse = async (courseData) => {
+        const response = await axiosInstance.post('/add-course', { ...courseData })
+        const data = response.data;
+        if (data.ok) {
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Course Create Successfully',
+                showConfirmButton: false,
+                timer: 1500
+            })
+        }
+    }
 
     const handleAddClass = e => {
         e.preventDefault();
@@ -27,29 +43,10 @@ const AddClass = () => {
         const startDate = form.start_date.value;
         const endDate = form.end_date.value;
 
-        const savedClass = { className, image, instructorName, instructorEmail, instructorPhoto, availableSeat, price, enrollStudent, status, description, startDate, endDate, feedbacks };
-        //console.log(savedClass);
-        fetch('https://summar-camp-server.vercel.app/addclass', {
-            method: "POST",
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(savedClass)
-        })
-            .then(res => res.json())
-            .then(data => {
-                //console.log(data);
-                if (data.insertedId) {
-                    Swal.fire({
-                        position: 'center',
-                        icon: 'success',
-                        title: 'Class Added Successfully',
-                        showConfirmButton: false,
-                        timer: 1500
-                    })
-                }
-                form.reset();
-            })
+        const courseData = { className, image, instructorName, instructorEmail, instructorPhoto, availableSeat, price, enrollStudent, status, description, startDate, endDate, feedbacks };
+       
+        addCourse(courseData);
+        form.reset();
     }
 
     return (
@@ -99,20 +96,7 @@ const AddClass = () => {
                         </div>
                     </div>
                 </div>
-                {/* <div className='grid grid-cols-1 md:grid-cols-2 gap-5 mb-1'>
-                    <div>
-                        <label htmlFor="" className='label'>Experience</label>
-                        <div>
-                            <input type="number" name="experience" placeholder='Enter experience' className='input-control-class focus:border-blue-500 focus:outline-0' />
-                        </div>
-                    </div>
-                    <div>
-                        <label htmlFor="" className='label'>Duration (week)</label>
-                        <div>
-                            <input type="number" name="duration" placeholder='Enter duration (week)' className='input-control-class focus:border-blue-500 focus:outline-0' />
-                        </div>
-                    </div>
-                </div> */}
+               
                 <div className='grid grid-cols-1 md:grid-cols-2 gap-5 mb-1'>
                     <div>
                         <label htmlFor="" className='label'>Start date</label>

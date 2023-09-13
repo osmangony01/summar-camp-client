@@ -10,7 +10,7 @@ const useEnrolledClasses = () => {
     const { isLoading, refetch, data: enrolledClasses = [] } = useQuery({
         queryKey: ['enrolledClasses', user?.email],
         queryFn: async () => {
-            const response = await axiosInstance.get(`/enrolled-classes?email=${user.email}`)
+            const response = await axiosInstance.get(`/enrolled-courses?email=${user.email}`)
             return response.data;
         },
     })

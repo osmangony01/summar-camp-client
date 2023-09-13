@@ -6,7 +6,7 @@ const useApprovedClasses = () => {
     const { isLoading, refetch, data: approvedClass = [] } = useQuery({
         queryKey: ['approvedClass'],
         queryFn: async () => {
-            const response = await axiosInstance.get("/approved-classes");
+            const response = await axiosInstance.get("/approve-courses");
             return response.data;
         },
     })

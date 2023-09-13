@@ -2,7 +2,6 @@ import { useContext } from "react";
 import useApprovedClasses from "../../hooks/useApprovedClasses";
 import { AuthContext } from "../../provider/AuthProvider";
 import { Link, useNavigate } from "react-router-dom";
-import addSelectedClass from "../../loader/addSelectedClass";
 import useRole from "../../hooks/useRole";
 
 import { PiBookmarksSimple } from "react-icons/pi";
@@ -28,15 +27,7 @@ const TopClasses = () => {
     const { user } = useContext(AuthContext);
     const navigate = useNavigate();
 
-    const handleClasses = (item) => {
-        if (user) {
-            // addSelectedClass(item, user);
-            //navigate('/view-details')
-        }
-        else {
-            navigate("/login", { replace: true });
-        }
-    }
+    
     const handleBookmark = (item) => {
         if (user) {
             //addToCard(item, user);

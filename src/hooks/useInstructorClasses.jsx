@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { useContext } from 'react';
 import { AuthContext } from '../provider/AuthProvider';
+import axiosInstance from '../routes/axiosInstance';
 
 
 const useInstructorClasses = () => {
@@ -9,8 +10,8 @@ const useInstructorClasses = () => {
     const { isLoading, refetch, data: instructorClass = [] } = useQuery({
         queryKey: ['instructorClass', user?.email],
         queryFn: async () => {
-            const response = await fetch(`https://summar-camp-server.vercel.app/instructor/classes?email=${user.email}`)
-            return response.json()
+            const response = await axiosInstance.get(`/instructor-courses?email=${user.email}`)
+            return response.data;
         },
     })
 

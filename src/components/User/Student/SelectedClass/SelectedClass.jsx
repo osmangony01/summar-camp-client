@@ -9,7 +9,21 @@ const SelectedClass = () => {
     const [bookedClasses, refetch] = useBookedClasses();
     //console.log(bookedClasses);
 
-    const handleDelete =  id => {
+
+    const deleteSelectedCourse = async (id) => {
+        const res = await axiosInstance.delete(`/delete-selected-course/${id}`);
+        const data = res.data;
+        if (data.ok) {
+            refetch();
+            Swal.fire(
+                'Deleted!',
+                'Your file has been deleted.',
+                'success'
+            )
+        }
+    }
+
+    const handleDelete = id => {
         Swal.fire({
             title: 'Are you sure?',
             text: "You won't be able to revert this!",
@@ -20,19 +34,7 @@ const SelectedClass = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                async function deleteClass (){
-                    const res = await axiosInstance.delete(`/delete-selected-class/${id}`);
-                    const data = res.data;
-                    if (data.deletedCount > 0) {
-                        refetch();
-                        Swal.fire(
-                            'Deleted!',
-                            'Your file has been deleted.',
-                            'success'
-                        )
-                    }
-                }
-                deleteClass();
+                deleteSelectedCourse(id)
             }
         })
     }
@@ -57,7 +59,7 @@ const SelectedClass = () => {
                         </thead>
                         <tbody>
                             {
-                                bookedClasses.map((item, index) => <tr key={item._id}>
+                                bookedClasses?.map((item, index) => <tr key={item._id}>
                                     <td>{index + 1}</td>
                                     <td>
                                         <div className="avatar">
@@ -70,7 +72,7 @@ const SelectedClass = () => {
                                     <td>{item.instructorName}</td>
                                     <td>{item.availableSeat}</td>
                                     <td>$ {item.price}</td>
-                                    <td><Link to={`/dashboard/payment/${item._id}`}><button className='p-2 rounded-md text-base font-semibold bg-orange-500 text-white hover:bg-orange-700 border-orange-400'>Pay</button></Link></td>
+                                    <td><Link to={`/dashboard/payment/${item._id}`} state={item}><button className='p-2 rounded-md text-base font-semibold bg-orange-500 text-white hover:bg-orange-700 border-orange-400'>Pay</button></Link></td>
                                     <td><button onClick={() => handleDelete(item._id)} className="p-2 rounded-md text-base font-semibold bg-red-600 hover:bg-slate-400"><FaTrashAlt color={'white'} size={25}></FaTrashAlt></button></td>
                                 </tr>
                                 )

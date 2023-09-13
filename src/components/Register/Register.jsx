@@ -4,6 +4,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 import Swal from "sweetalert2";
 import useTitle from "../../hooks/useTitle";
+import axios from "axios";
+import axiosInstance from "../../routes/axiosInstance";
 
 
 
@@ -15,10 +17,28 @@ const Register = () => {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     useTitle('Register');
 
-    const onSubmit = data => {
+
+    const addUser = async (user) => {
+        const response = await axiosInstance.post('/add-user', { ...user });
+        console.log(response)
+        const data = response.data;
+        if (data.ok) {
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Registration successful',
+                showConfirmButton: false,
+                timer: 1500
+            })
+            navigate("/", { replace: true });
+        }
+    }
+
+
+    const onSubmit = async (data) => {
         //console.log(data);
         setConPassErr('');
-        if(data.password !== data.confirm_password){
+        if (data.password !== data.confirm_password) {
             setConPassErr("Password does not match!");
             return;
         }
@@ -31,32 +51,35 @@ const Register = () => {
                 updateUserData(result.user, data.name, data.photo_url)
                     .then(() => {
                         //console.log('user name updated ...');
-                        const savedUser = { name: data.name, email: data.email, role: 'student', photo:data.photo_url };
-                        fetch(`https://summar-camp-server.vercel.app/users`, {
-                            method: "POST",
-                            headers: {
-                                'content-type': 'application/json'
-                            },
-                            body: JSON.stringify(savedUser)
-                        })
-                            .then(res => res.json())
-                            .then(data => {
-                                if (data.insertedId) {
-                                    Swal.fire({
-                                        position: 'top-end',
-                                        icon: 'success',
-                                        title: 'Registration successful',
-                                        showConfirmButton: false,
-                                        timer: 1500
-                                    })
-                                    navigate("/", { replace: true });
-                                }
-                            })
+                        const user = { name: data.name, email: data.email, role: 'student', photo: data.photo_url };
+                        // fetch(`http://localhost:5005/add-user`, {
+                        //     method: "POST",
+                        //     headers: {
+                        //         'content-type': 'application/json'
+                        //     },
+                        //     body: JSON.stringify(savedUser)
+                        // })
+                        // .then(res => res.json())
+                        // .then(data => {
+                        //     if (data.insertedId) {
+                        //         Swal.fire({
+                        //             position: 'top-end',
+                        //             icon: 'success',
+                        //             title: 'Registration successful',
+                        //             showConfirmButton: false,
+                        //             timer: 1500
+                        //         })
+                        //         navigate("/", { replace: true });
+                        //     }
+                        // })
+                        addUser(user);
+
+
                     })
                     .catch(error => {
                         console.log(error.message);
                     })
-                
+
             })
             .catch(error => {
                 console.log(error.message);
@@ -72,7 +95,7 @@ const Register = () => {
                 <form action="" className='px-4' onSubmit={handleSubmit(onSubmit)}>
                     <div className='mb-3'>
                         <label htmlFor="" className='block  mb-1.5'>Name</label>
-                        <input type="text" {...register("name", { required: true })} name="name" className='input-control hover:border-blue-400 focus:border-blue-400' placeholder='Enter your name'/>
+                        <input type="text" {...register("name", { required: true })} name="name" className='input-control hover:border-blue-400 focus:border-blue-400' placeholder='Enter your name' />
                         {errors.name && <span className="text-red-600 text-sm">Name is required</span>}
                     </div>
                     <div className='mb-3'>
@@ -86,7 +109,7 @@ const Register = () => {
                             required: true,
                             minLength: 6,
                             pattern: /^(?=.*[A-Z])(?=.*[!@#$&*])/
-                        })} name="password" className='input-control hover:border-blue-400 focus:border-blue-400' placeholder='Enter your password'  />
+                        })} name="password" className='input-control hover:border-blue-400 focus:border-blue-400' placeholder='Enter your password' />
                         {errors.password?.type === 'required' && <p className="text-red-600 text-sm">Password is required</p>}
                         {errors.password?.type === 'minLength' && <p className="text-red-600 text-sm">Password must be 6 characters</p>}
                         {errors.password?.type === 'pattern' && <p className="text-red-600 text-sm">Password must have one uppercase letter and one special character!</p>}

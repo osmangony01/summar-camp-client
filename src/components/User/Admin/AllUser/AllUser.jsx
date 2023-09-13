@@ -4,6 +4,7 @@ import { FaTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
 import useRole from "../../../../hooks/useRole";
 import { useState } from "react";
+import axiosInstance from "../../../../routes/axiosInstance";
 
 
 const AllUser = () => {
@@ -13,7 +14,7 @@ const AllUser = () => {
     }
 
     const { data: users = [], refetch } = useQuery(['users'], async () => {
-        const res = await fetch(`https://summar-camp-server.vercel.app/users`, { headers });
+        const res = await fetch(`https://summar-camp-server.vercel.app/all-users`, { headers });
         return res.json();
     })
 
@@ -51,9 +52,9 @@ const AllUser = () => {
    
     const handleMakeRole = async (user, roleName) => {
         const role = { id: user._id, name: roleName };
-        const res = await axios.patch('https://summar-camp-server.vercel.app/user-role/', role)
-        const response = res.data;
-        if (response.modifiedCount) {
+        const response = await axiosInstance.patch('/user-role', {...role})
+        const data = response.data;
+        if (data.ok) {
             refetch();
             Swal.fire({
                 position: 'top-end',

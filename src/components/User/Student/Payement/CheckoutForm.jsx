@@ -6,6 +6,7 @@ import { AuthContext } from '../../../../provider/AuthProvider';
 // import './CheckoutForm.css';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
+import axiosInstance from '../../../../routes/axiosInstance';
 
 
 const CheckoutForm = ({ selectedClass, price }) => {
@@ -23,6 +24,7 @@ const CheckoutForm = ({ selectedClass, price }) => {
 
     useEffect(() => {
         if (price > 0) {
+
             fetch("https://summar-camp-server.vercel.app/create-payment-intent", {
                 method: "POST",
                 headers: { "content-type": "application/json" },
@@ -37,6 +39,20 @@ const CheckoutForm = ({ selectedClass, price }) => {
     }, [])
 
 
+    const makePayment = async (enrollCourseInfo) => {
+        const response = await axiosInstance.post('/payment', { ...enrollCourseInfo })
+        const data = response.data;
+        if (data.ok) {
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Payment is Successfully',
+                showConfirmButton: false,
+                timer: 1500
+            })
+            navigate('/dashboard/my-enroll-classes', { replace: true })
+        }
+    }
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -57,7 +73,7 @@ const CheckoutForm = ({ selectedClass, price }) => {
         })
 
         if (error) {
-           // console.log('error', error)
+            // console.log('error', error)
             setCardError(error.message);
         }
         else {
@@ -89,9 +105,9 @@ const CheckoutForm = ({ selectedClass, price }) => {
         setProcessing(false)
 
         if (paymentIntent.status === 'succeeded') {
-          
+
             const enrolledClass = {
-                selectedClassId : selectedClass._id,
+                selectedClassId: selectedClass._id,
                 classId: selectedClass.classId,
                 className: selectedClass.className,
                 image: selectedClass.image,
@@ -100,30 +116,13 @@ const CheckoutForm = ({ selectedClass, price }) => {
                 instructorEmail: selectedClass.instructorEmail,
                 instructorName: selectedClass.instructorName,
                 price: selectedClass.price,
-                date : new Date(),
+                date: new Date(),
                 transactionId: paymentIntent.id,
                 paymentStatus: "paid"
             }
 
-            fetch("https://summar-camp-server.vercel.app/payment", {
-                method: "POST",
-                headers: { "content-type": "application/json" },
-                body: JSON.stringify(enrolledClass),
-            })
-                .then((res) => res.json())
-                .then((data) => {
-                    //console.log(data);
-                    if (data.insertedId) {
-                        Swal.fire({
-                            position: 'center',
-                            icon: 'success',
-                            title: 'Payment is Successfully',
-                            showConfirmButton: false,
-                            timer: 1500
-                        })
-                        navigate('/dashboard/my-enroll-classes', { replace: true })
-                    }
-                });
+            makePayment(enrolledClass);
+            
         }
 
 
