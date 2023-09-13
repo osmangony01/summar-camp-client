@@ -67,7 +67,7 @@ const Classes = () => {
                                     <span className="flex justify-center items-center gap-1"><FaStar size={14} color="orange"></FaStar><span className="text-sm">4.7</span></span>
                                 </div>
                                 <p className="text-[15px] px-4 pt-2 text-[#777777]">{item.description}</p>
-                                <div className="flex justify-between items-center text-sm bg-slate-100 text-[#686868] mt-6 px-4 py-3">
+                                <div className=" flex justify-between items-center text-sm bg-slate-100 text-[#686868] mt-6 px-4 py-3">
                                     <div className="flex justify-center items-center gap-2 ">
                                         <img className="h-[25px] w-[25px] rounded-full border border-slate-400" src={item.instructorPhoto} alt="logo" />
                                         <span>{item.instructorName}</span>

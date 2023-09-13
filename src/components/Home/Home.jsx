@@ -17,8 +17,8 @@ const Home = () => {
             <InstructorSection></InstructorSection>
             <ExtraSection></ExtraSection>
             {/* <Result></Result> */}
-            <Newsletter></Newsletter>
             <About></About>
+            <Newsletter></Newsletter>
         </div>
     );
 };

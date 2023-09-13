@@ -15,7 +15,7 @@ const InstructorSection = () => {
 
 
     return (
-        <div className="my-12 bg-[#444444] text-white pb-24 pt-12 px-10 md:px-0">
+        <div className="py-12 bg-[#444444] text-white pb-24 pt-12 px-10 md:px-0">
             <h2 className="text-3xl text-center font-semibold pt-10 pb-16">Popular Instructor</h2>
             <div className=" w-full md:w-2/3 lg:w-11/12 xl:w-4/5 mx-auto grid grid-cols-1 lg:grid-cols-2 gap-x-10 gap-y-16">
                 {
